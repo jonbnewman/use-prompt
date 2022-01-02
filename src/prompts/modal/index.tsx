@@ -1,7 +1,7 @@
 import React, { MouseEvent, ReactNode, useEffect } from 'react';
 import { PromptProps } from '../../index';
 
-import './style.scss';
+import './style.css';
 
 export interface ModalPromptProps extends PromptProps {
   message?: ReactNode;
