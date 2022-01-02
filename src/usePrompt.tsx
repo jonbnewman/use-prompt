@@ -1,12 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import ModalPrompt from './Prompt';
 
-interface PendingPrompt {
-  resolve: (value: any) => void;
-  reject: (reason?: any) => void;
-  props: any;
-}
-
 export type PromptComponent = (props: PromptProps) => JSX.Element | null;
 
 export interface PromptProps {
@@ -16,6 +10,22 @@ export interface PromptProps {
   reject: () => void;
 }
 
+interface PendingPrompt {
+  resolve: (value: any) => void;
+  reject: (reason?: any) => void;
+  props: any;
+  state: 'pending';
+}
+
+interface NoPrompt {
+  props?: any;
+  state: 'hidden';
+}
+
+const noPrompt: NoPrompt = {
+  state: 'hidden',
+};
+
 /**
  * Use prompt hook
  * @param Prompt The Prompt component to display
@@ -24,20 +34,24 @@ export interface PromptProps {
 export default function usePrompt(
   Prompt: PromptComponent = ModalPrompt
 ): [ReactNode, (props?: any) => Promise<any>, boolean] {
-  const [prompt, setPrompt] = useState<null | PendingPrompt>(null);
-  const visible = Boolean(prompt);
+  const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>(noPrompt);
+  const visible = prompt.state === 'pending';
+
+  function hidePrompt() {
+    setPrompt({ ...prompt, ...noPrompt });
+  }
 
   function resolve(value?: any) {
-    if (prompt) {
+    if (prompt.state === 'pending') {
       prompt.resolve(value);
-      setPrompt(null);
+      hidePrompt();
     }
   }
 
   function reject(value?: any) {
-    if (prompt) {
+    if (prompt.state === 'pending') {
       prompt.reject(value);
-      setPrompt(null);
+      hidePrompt();
     }
   }
 
@@ -49,7 +63,9 @@ export default function usePrompt(
       {...prompt?.props}
     />,
     (props?: any) =>
-      new Promise((resolve, reject) => setPrompt({ resolve, reject, props })),
+      new Promise((resolve, reject) =>
+        setPrompt({ resolve, reject, props, state: 'pending' })
+      ),
     visible,
   ];
 }

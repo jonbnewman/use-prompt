@@ -1,19 +1,22 @@
-import React, { FC, HTMLAttributes, ReactChild } from 'react';
+import React, { FC, HTMLAttributes, ReactNode } from 'react';
 import usePrompt from '../../src/usePrompt';
 
 import Message from './Message';
 import Button from './Button';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactChild;
+  message?: ReactNode;
+  resolveLabel?: string;
+  rejectLabel?: string;
+  escapable?: boolean;
 }
 
-export const Prompter: FC<Props> = () => {
+export const Prompter: FC<Props> = (props) => {
   const [prompt, showPrompt, visible] = usePrompt();
 
   async function triggerPrompt() {
     try {
-      const resolveReason = await showPrompt();
+      const resolveReason = await showPrompt(props);
       console.info('resolveReason', resolveReason);
     } catch (rejectReason) {
       console.info('rejectReason', rejectReason);
@@ -22,7 +25,7 @@ export const Prompter: FC<Props> = () => {
 
   return (
     <div>
-      <Message>
+      <Message color={visible ? 'red' : 'slategray'}>
         {visible ? 'Prompt is currently shown' : 'Prompt is currently hidden'}
       </Message>
       <Button variant="contained" onClick={triggerPrompt} disabled={visible}>
