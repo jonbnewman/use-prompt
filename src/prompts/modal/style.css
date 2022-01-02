@@ -1,0 +1,41 @@
+@keyframes promptfadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.prompt-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+}
+
+.prompt-container.visible {
+  visibility: visible;
+  opacity: 1;
+  animation-duration: 1s;
+  animation-name: promptfadein;
+}
+
+.prompt-dialog {
+  padding: 16px;
+  background: white;
+  border-radius: 3px;
+}
+
+.prompt-buttons {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 16px;
+  place-items: center end;
+  margin-top: 16px;
+}
