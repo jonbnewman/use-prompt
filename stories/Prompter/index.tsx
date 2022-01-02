@@ -17,7 +17,9 @@ export const Prompter: FC<Props> = (props) => {
 
   async function triggerPrompt() {
     try {
-      const resolveReason = await showPrompt((props) => <Prompt {...props} />);
+      const resolveReason = await showPrompt((promptState) => (
+        <Prompt {...promptState} {...props} />
+      ));
       console.info('resolveReason', resolveReason);
     } catch (rejectReason) {
       console.info('rejectReason', rejectReason);

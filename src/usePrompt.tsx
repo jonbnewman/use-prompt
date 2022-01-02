@@ -1,38 +1,44 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import ModalPrompt from './Prompt';
+
+type PromptOutlet = ReactNode;
+type IsVisibleBoolean = boolean;
+type ResolveReject = (value?: any) => void;
 
 export type PromptComponent = (props: PromptProps) => JSX.Element | null;
-
 export interface PromptProps {
   visible: boolean;
-  resolve: () => void;
-  reject: () => void;
+  resolve: ResolveReject;
+  reject: ResolveReject;
 }
-
-interface PendingPrompt {
-  state: 'pending';
-  renderer: PromptComponent;
-  resolve: (value: any) => void;
-  reject: (reason?: any) => void;
-}
+export type ShowPromptCallback = (
+  renderer: (props: {
+    visible: boolean;
+    resolve: (value?: any) => void;
+    reject: (value?: any) => void;
+  }) => JSX.Element
+) => Promise<unknown>;
 
 interface NoPrompt {
   state: 'hidden';
   renderer: PromptComponent;
 }
-
-export type RenderCallback = (
-  renderer: (props: PromptProps) => JSX.Element
-) => Promise<unknown>;
+interface PendingPrompt {
+  state: 'pending';
+  renderer: PromptComponent;
+  resolve: ResolveReject;
+  reject: ResolveReject;
+}
 
 /**
  * Use prompt hook
  * @param Prompt The Prompt component to display
- * @returns [prompt, showPrompt, visible]
+ * @returns [outlet, showPrompt, visible]
  */
-export default function usePrompt(
-  Prompt: PromptComponent = ModalPrompt
-): [ReactNode, RenderCallback, boolean] {
+export default function usePrompt(): [
+  PromptOutlet,
+  ShowPromptCallback,
+  IsVisibleBoolean
+] {
   const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>({
     state: 'hidden',
     renderer: () => null,
@@ -63,7 +69,7 @@ export default function usePrompt(
 
   return [
     prompt.renderer({ visible, resolve, reject }),
-    (renderer: (props: PromptProps) => JSX.Element) =>
+    (renderer) =>
       new Promise((resolve, reject) =>
         setPrompt({
           resolve,
