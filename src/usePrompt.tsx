@@ -46,19 +46,12 @@ export default function usePrompt(): [
   });
 
   const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    if (prompt.state === 'pending') {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [prompt]);
+  useEffect(() => setVisible(prompt.state === 'pending'), [prompt]);
 
   function resolve(value?: any) {
     prompt.resolve(value);
     setPrompt({ ...prompt, state: 'hidden' });
   }
-
   function reject(value?: any) {
     prompt.reject(value);
     setPrompt({ ...prompt, state: 'hidden' });
