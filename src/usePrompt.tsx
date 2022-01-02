@@ -2,19 +2,19 @@ import React, { ReactNode, useEffect, useState } from 'react';
 
 type PromptOutlet = ReactNode;
 type IsVisibleBoolean = boolean;
-type ResolveReject = (value?: any) => void;
+type ValueCallback = (value?: any) => void;
 
-export type PromptComponent = (props: PromptProps) => JSX.Element | null;
-export interface PromptProps {
+export type PromptComponent = (props: {
   visible: boolean;
-  resolve: ResolveReject;
-  reject: ResolveReject;
-}
+  resolve: ValueCallback;
+  reject: ValueCallback;
+}) => JSX.Element | null;
+
 export type ShowPromptCallback = (
   renderer: (props: {
     visible: boolean;
-    resolve: (value?: any) => void;
-    reject: (value?: any) => void;
+    resolve: ValueCallback;
+    reject: ValueCallback;
   }) => JSX.Element
 ) => Promise<unknown>;
 
@@ -25,8 +25,8 @@ interface NoPrompt {
 interface PendingPrompt {
   state: 'pending';
   renderer: PromptComponent;
-  resolve: ResolveReject;
-  reject: ResolveReject;
+  resolve: ValueCallback;
+  reject: ValueCallback;
 }
 
 /**

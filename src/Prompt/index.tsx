@@ -1,9 +1,11 @@
 import React, { MouseEvent, ReactNode, useEffect } from 'react';
-import { PromptProps } from '../index';
 
 import './style.css';
 
-export interface ModalPromptProps extends PromptProps {
+export interface PromptProps {
+  visible: boolean;
+  resolve: (value?: any) => void;
+  reject: (value?: any) => void;
   message?: ReactNode;
   resolveLabel?: string;
   rejectLabel?: string;
@@ -14,7 +16,7 @@ function stopEvent(event: MouseEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default function Prompt(props: ModalPromptProps) {
+export default function Prompt(props: PromptProps) {
   const {
     visible,
     resolve,
