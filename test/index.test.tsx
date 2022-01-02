@@ -1,11 +1,11 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Default as Prompt } from '../stories/Prompt.stories';
+import { ModalPrompt } from '../stories/Prompter.stories';
 
-describe('Prompt', () => {
+describe('Modal Prompt', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Prompt />, div);
+    ReactDOM.render(<ModalPrompt />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
