@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import usePrompt from '../../src/usePrompt';
+import usePrompt from '../../src';
 import Prompt from '../../src/Prompt';
 
 import Message from './Message';
