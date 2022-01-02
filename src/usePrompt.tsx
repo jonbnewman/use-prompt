@@ -1,30 +1,29 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import ModalPrompt from './Prompt';
 
 export type PromptComponent = (props: PromptProps) => JSX.Element | null;
 
 export interface PromptProps {
   visible: boolean;
-  props: any;
   resolve: () => void;
   reject: () => void;
 }
 
 interface PendingPrompt {
+  state: 'pending';
+  renderer: PromptComponent;
   resolve: (value: any) => void;
   reject: (reason?: any) => void;
-  props: any;
-  state: 'pending';
 }
 
 interface NoPrompt {
-  props?: any;
   state: 'hidden';
+  renderer: PromptComponent;
 }
 
-const noPrompt: NoPrompt = {
-  state: 'hidden',
-};
+export type RenderCallback = (
+  renderer: (props: PromptProps) => JSX.Element
+) => Promise<unknown>;
 
 /**
  * Use prompt hook
@@ -33,38 +32,45 @@ const noPrompt: NoPrompt = {
  */
 export default function usePrompt(
   Prompt: PromptComponent = ModalPrompt
-): [ReactNode, (props?: any) => Promise<any>, boolean] {
-  const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>(noPrompt);
-  const visible = prompt.state === 'pending';
+): [ReactNode, RenderCallback, boolean] {
+  const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>({
+    state: 'hidden',
+    renderer: () => null,
+  });
 
-  function hidePrompt() {
-    setPrompt({ ...prompt, ...noPrompt });
-  }
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (prompt.state === 'pending') {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [prompt]);
 
   function resolve(value?: any) {
     if (prompt.state === 'pending') {
       prompt.resolve(value);
-      hidePrompt();
+      setPrompt({ ...prompt, state: 'hidden' });
     }
   }
 
   function reject(value?: any) {
     if (prompt.state === 'pending') {
       prompt.reject(value);
-      hidePrompt();
+      setPrompt({ ...prompt, state: 'hidden' });
     }
   }
 
   return [
-    <Prompt
-      resolve={resolve}
-      reject={reject}
-      visible={visible}
-      {...prompt?.props}
-    />,
-    (props?: any) =>
+    prompt.renderer({ visible, resolve, reject }),
+    (renderer: (props: PromptProps) => JSX.Element) =>
       new Promise((resolve, reject) =>
-        setPrompt({ resolve, reject, props, state: 'pending' })
+        setPrompt({
+          resolve,
+          reject,
+          renderer,
+          state: 'pending',
+        })
       ),
     visible,
   ];

@@ -1,5 +1,6 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react';
 import usePrompt from '../../src/usePrompt';
+import Prompt from '../../src/Prompt';
 
 import Message from './Message';
 import Button from './Button';
@@ -16,7 +17,7 @@ export const Prompter: FC<Props> = (props) => {
 
   async function triggerPrompt() {
     try {
-      const resolveReason = await showPrompt(props);
+      const resolveReason = await showPrompt((props) => <Prompt {...props} />);
       console.info('resolveReason', resolveReason);
     } catch (rejectReason) {
       console.info('rejectReason', rejectReason);
