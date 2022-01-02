@@ -1,8 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
+type PromptResponse = any;
 type PromptOutlet = ReactNode;
 type IsVisibleBoolean = boolean;
-type ValueCallback = (value?: any) => void;
+type ValueCallback = (value?: PromptResponse) => void;
 
 type Renderer = (props: {
   visible: boolean;
@@ -24,7 +25,7 @@ interface Prompt {
  */
 export default function usePrompt(): [
   PromptOutlet,
-  (renderer: Renderer) => Promise<unknown>,
+  (renderer: Renderer) => Promise<PromptResponse>,
   IsVisibleBoolean
 ] {
   const [prompt, setPrompt] = useState<Prompt>({
@@ -37,11 +38,11 @@ export default function usePrompt(): [
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(prompt.state === 'pending'), [prompt]);
 
-  function resolve(value?: any) {
+  function resolve(value?: PromptResponse) {
     prompt.resolve(value);
     setPrompt({ ...prompt, state: 'hidden' });
   }
-  function reject(value?: any) {
+  function reject(value?: PromptResponse) {
     prompt.reject(value);
     setPrompt({ ...prompt, state: 'hidden' });
   }
