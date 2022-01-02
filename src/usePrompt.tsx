@@ -10,23 +10,16 @@ type PromptComponent = (props: {
   reject: ValueCallback;
 }) => JSX.Element | null;
 
-type ShowPromptCallback = (
-  renderer: (props: {
-    visible: boolean;
-    resolve: ValueCallback;
-    reject: ValueCallback;
-  }) => JSX.Element
-) => Promise<unknown>;
-
-interface NoPrompt {
-  state: 'hidden';
-  renderer: PromptComponent;
-}
-interface PendingPrompt {
-  state: 'pending';
+interface PromptState {
   renderer: PromptComponent;
   resolve: ValueCallback;
   reject: ValueCallback;
+}
+interface NoPrompt extends PromptState {
+  state: 'hidden';
+}
+interface PendingPrompt extends PromptState {
+  state: 'pending';
 }
 
 /**
@@ -36,11 +29,19 @@ interface PendingPrompt {
  */
 export default function usePrompt(): [
   PromptOutlet,
-  ShowPromptCallback,
+  (
+    renderer: (props: {
+      visible: boolean;
+      resolve: ValueCallback;
+      reject: ValueCallback;
+    }) => JSX.Element
+  ) => Promise<unknown>,
   IsVisibleBoolean
 ] {
   const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>({
     state: 'hidden',
+    resolve: () => {},
+    reject: () => {},
     renderer: () => null,
   });
 
@@ -54,17 +55,13 @@ export default function usePrompt(): [
   }, [prompt]);
 
   function resolve(value?: any) {
-    if (prompt.state === 'pending') {
-      prompt.resolve(value);
-      setPrompt({ ...prompt, state: 'hidden' });
-    }
+    prompt.resolve(value);
+    setPrompt({ ...prompt, state: 'hidden' });
   }
 
   function reject(value?: any) {
-    if (prompt.state === 'pending') {
-      prompt.reject(value);
-      setPrompt({ ...prompt, state: 'hidden' });
-    }
+    prompt.reject(value);
+    setPrompt({ ...prompt, state: 'hidden' });
   }
 
   return [

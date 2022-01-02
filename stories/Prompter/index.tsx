@@ -12,13 +12,13 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   escapable?: boolean;
 }
 
-export const Prompter: FC<Props> = (props) => {
-  const [prompt, showPrompt, visible] = usePrompt();
+export const Prompter: FC<Props> = (storybookProps) => {
+  const [outlet, showPrompt, visible] = usePrompt();
 
   async function triggerPrompt() {
     try {
-      const resolveReason = await showPrompt((promptState) => (
-        <Prompt {...promptState} {...props} />
+      const resolveReason = await showPrompt((props) => (
+        <Prompt {...props} {...storybookProps} />
       ));
       console.info('resolveReason', resolveReason);
     } catch (rejectReason) {
@@ -34,7 +34,7 @@ export const Prompter: FC<Props> = (props) => {
       <Button variant="contained" onClick={triggerPrompt} disabled={visible}>
         Show prompt
       </Button>
-      {prompt}
+      {outlet}
     </div>
   );
 };
