@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactChild } from 'react';
-import usePrompt from '../../hooks/usePrompt';
+import usePrompt from '../hooks/usePrompt';
 
 import Message from './Message';
 import Button from './Button';
@@ -8,7 +8,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactChild;
 }
 
-export const Prompt: FC<Props> = () => {
+export const Prompter: FC<Props> = () => {
   const [prompt, showPrompt, visible] = usePrompt();
 
   async function triggerPrompt() {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Prompt, Props } from '../src/components/Prompt';
+import { Prompter, Props } from '../src/Prompter';
 import Wrapper from './Wrapper';
 
 const meta: Meta = {
   title: 'usePrompt',
-  component: Prompt,
+  component: Prompter,
   argTypes: {
     children: {
       control: {
@@ -22,7 +22,7 @@ export default meta;
 
 const Template: Story<Props> = (args) => (
   <Wrapper>
-    <Prompt {...args} />
+    <Prompter {...args} />
   </Wrapper>
 );
 

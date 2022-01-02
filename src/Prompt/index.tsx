@@ -1,5 +1,5 @@
 import React, { MouseEvent, ReactNode, useEffect } from 'react';
-import { PromptProps } from '../../index';
+import { PromptProps } from '../index';
 
 import './style.css';
 
@@ -14,7 +14,7 @@ function stopEvent(event: MouseEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default (props: ModalPromptProps) => {
+export default function Prompt(props: ModalPromptProps) {
   const {
     visible,
     resolve,
@@ -49,4 +49,4 @@ export default (props: ModalPromptProps) => {
       </div>
     </div>
   );
-};
+}

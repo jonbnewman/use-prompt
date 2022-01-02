@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import ModalPrompt from '../prompts/modal';
+import ModalPrompt from '../Prompt/';
 
 interface PendingPrompt {
   resolve: (value: any) => void;
