@@ -1,12 +1,3 @@
-@keyframes promptfadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .prompt-container {
   position: fixed;
   top: 0;
@@ -17,13 +8,13 @@
   display: grid;
   place-items: center;
   visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 .prompt-container.visible {
   visibility: visible;
   opacity: 1;
-  animation-duration: 1s;
-  animation-name: promptfadein;
 }
 
 .prompt-dialog {

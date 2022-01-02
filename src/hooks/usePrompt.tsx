@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import ModalPrompt from '../prompts/modal';
 
-export interface Prompt {
+interface PendingPrompt {
   resolve: (value: any) => void;
   reject: (reason?: any) => void;
   props: any;
@@ -24,17 +24,17 @@ export interface PromptProps {
 export default function usePrompt(
   Prompt: PromptComponent = ModalPrompt
 ): [ReactNode, (props?: any) => Promise<any>, boolean] {
-  const [prompt, setPrompt] = useState<null | Prompt>(null);
+  const [prompt, setPrompt] = useState<null | PendingPrompt>(null);
   const visible = Boolean(prompt);
 
-  async function resolve(value?: any) {
+  function resolve(value?: any) {
     if (prompt) {
       prompt.resolve(value);
       setPrompt(null);
     }
   }
 
-  async function reject(value?: any) {
+  function reject(value?: any) {
     if (prompt) {
       prompt.reject(value);
       setPrompt(null);
