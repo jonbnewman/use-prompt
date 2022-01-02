@@ -1,12 +1,12 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Thing } from '../.';
+import { Prompt } from '../src/components/Prompt';
 
 const App = () => {
   return (
     <div>
-      <Thing />
+      <Prompt />
     </div>
   );
 };
