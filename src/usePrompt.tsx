@@ -4,22 +4,17 @@ type PromptOutlet = ReactNode;
 type IsVisibleBoolean = boolean;
 type ValueCallback = (value?: any) => void;
 
-type PromptComponent = (props: {
+type Renderer = (props: {
   visible: boolean;
   resolve: ValueCallback;
   reject: ValueCallback;
-}) => JSX.Element | null;
+}) => ReactNode;
 
-interface PromptState {
-  renderer: PromptComponent;
+interface Prompt {
+  state: 'pending' | 'hidden';
+  renderer: Renderer;
   resolve: ValueCallback;
   reject: ValueCallback;
-}
-interface NoPrompt extends PromptState {
-  state: 'hidden';
-}
-interface PendingPrompt extends PromptState {
-  state: 'pending';
 }
 
 /**
@@ -29,16 +24,10 @@ interface PendingPrompt extends PromptState {
  */
 export default function usePrompt(): [
   PromptOutlet,
-  (
-    renderer: (props: {
-      visible: boolean;
-      resolve: ValueCallback;
-      reject: ValueCallback;
-    }) => JSX.Element
-  ) => Promise<unknown>,
+  (renderer: Renderer) => Promise<unknown>,
   IsVisibleBoolean
 ] {
-  const [prompt, setPrompt] = useState<NoPrompt | PendingPrompt>({
+  const [prompt, setPrompt] = useState<Prompt>({
     state: 'hidden',
     resolve: () => {},
     reject: () => {},
