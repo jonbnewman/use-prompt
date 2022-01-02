@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes, ReactChild } from 'react';
-import usePrompt from '../hooks/usePrompt';
+import usePrompt from '../../src/usePrompt';
 
 import Message from './Message';
 import Button from './Button';

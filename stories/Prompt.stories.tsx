@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Prompter, Props } from '../src/Prompter';
+import { Prompter, Props } from './Prompter';
 import Wrapper from './Wrapper';
 
 const meta: Meta = {

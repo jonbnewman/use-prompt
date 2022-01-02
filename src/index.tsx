@@ -1,1 +1,1 @@
-export * from './hooks/usePrompt';
+export * from './usePrompt';
