@@ -4,13 +4,13 @@ type PromptOutlet = ReactNode;
 type IsVisibleBoolean = boolean;
 type ValueCallback = (value?: any) => void;
 
-export type PromptComponent = (props: {
+type PromptComponent = (props: {
   visible: boolean;
   resolve: ValueCallback;
   reject: ValueCallback;
 }) => JSX.Element | null;
 
-export type ShowPromptCallback = (
+type ShowPromptCallback = (
   renderer: (props: {
     visible: boolean;
     resolve: ValueCallback;
