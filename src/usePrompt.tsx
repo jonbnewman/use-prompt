@@ -4,7 +4,6 @@ type PromptResponse = any;
 type PromptOutlet = ReactNode;
 type IsVisibleBoolean = boolean;
 type ValueCallback = (value?: PromptResponse) => void;
-
 type Renderer = (props: {
   visible: boolean;
   resolve: ValueCallback;
@@ -20,7 +19,6 @@ interface Prompt {
 
 /**
  * Use prompt hook
- * @param Prompt The Prompt component to display
  * @returns [outlet, showPrompt, visible]
  */
 export default function usePrompt(): [
