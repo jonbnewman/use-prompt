@@ -29,4 +29,5 @@ const Template: Story<Props> = (args) => (
 export const ModalPrompt = Template.bind({});
 ModalPrompt.args = {
   message: 'This is a modal prompt',
+  type: 'modal',
 };

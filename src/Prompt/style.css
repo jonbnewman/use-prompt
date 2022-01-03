@@ -1,4 +1,4 @@
-.prompt-container {
+.prompt-container.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +12,13 @@
   transition: all 0.3s ease;
 }
 
+.prompt-container.inline {
+  opacity: 0;
+  display: block;
+  float: left;
+  transition: all 0.3s ease;
+}
+
 .prompt-container.visible {
   visibility: visible;
   opacity: 1;
@@ -22,6 +29,7 @@
   transform-origin: 50% 50%;
   transition: all 0.2s ease;
 }
+
 .prompt-container.visible .prompt-dialog {
   transform: scale(1);
   transition: all 0.3s ease;
@@ -50,9 +58,11 @@
   cursor: pointer;
   border: 1px solid transparent;
 }
+
 .prompt-buttons button:hover {
   border-color: rgba(0, 0, 0, 0.2);
 }
+
 .prompt-buttons button:active {
   background: #c7c7c7;
   box-shadow: none;

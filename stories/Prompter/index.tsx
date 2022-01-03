@@ -10,6 +10,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   resolveLabel?: string;
   rejectLabel?: string;
   escapable?: boolean;
+  type?: 'modal' | 'inline';
 }
 
 export const Prompter: FC<Props> = (storybookProps) => {
@@ -30,9 +31,11 @@ export const Prompter: FC<Props> = (storybookProps) => {
       <Message color={visible ? 'red' : 'slategray'}>
         {visible ? 'Prompt is currently shown' : 'Prompt is currently hidden'}
       </Message>
-      <Button variant="contained" onClick={triggerPrompt} disabled={visible}>
-        Show prompt
-      </Button>
+      <div>
+        <Button variant="contained" onClick={triggerPrompt} disabled={visible}>
+          Show prompt
+        </Button>
+      </div>
       {outlet}
     </div>
   );

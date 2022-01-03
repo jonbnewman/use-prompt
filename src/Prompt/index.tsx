@@ -3,6 +3,7 @@ import React, { MouseEvent, ReactNode, useEffect } from 'react';
 import './style.css';
 
 export interface PromptProps {
+  type?: 'modal' | 'inline';
   visible: boolean;
   resolve: (value?: any) => void;
   reject: (value?: any) => void;
@@ -22,6 +23,7 @@ export default function Prompt(props: PromptProps) {
     resolve,
     reject,
     escapable = true,
+    type = 'modal',
     message = 'Are you sure?',
     resolveLabel = 'Confirm',
     rejectLabel = 'Cancel',
@@ -38,7 +40,7 @@ export default function Prompt(props: PromptProps) {
   }, [escapable, reject]);
 
   return (
-    <div className={`prompt-container${visible ? ' visible' : ''}`}>
+    <div className={`${type} prompt-container${visible ? ' visible' : ''}`}>
       <div className="prompt-dialog" onClick={stopEvent}>
         <div className="prompt-message">{message}</div>
         <div className="prompt-buttons">
