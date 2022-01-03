@@ -6,18 +6,6 @@ import Wrapper from './components/Wrapper';
 const meta: Meta = {
   title: 'usePrompt',
   component: Prompter,
-  argTypes: {
-    component: {
-      control: {
-        type: null,
-      },
-    },
-    type: {
-      control: {
-        type: null,
-      },
-    },
-  },
   parameters: {
     controls: { expanded: true },
   },

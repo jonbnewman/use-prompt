@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, waitFor, cleanup, fireEvent } from '@testing-library/react';
 
-import { ExamplePrompt } from '../stories/Prompter.stories';
+import { ExamplePrompt } from '../stories/ExamplePrompter.stories';
 
 describe('Modal Prompt', () => {
   afterEach(() => {
