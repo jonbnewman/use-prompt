@@ -30,12 +30,12 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
 
-      - name: Codecov Report
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
-          verbose: true
+      # - name: Codecov Report
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     fail_ci_if_error: true
+      #     verbose: true
 
       - name: Coveralls Report
         uses: coverallsapp/github-action@master

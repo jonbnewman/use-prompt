@@ -1,7 +1,7 @@
 # use-prompt
 
 ![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
-[![codecov](https://codecov.io/gh/jonbnewman/use-prompt/branch/main/graph/badge.svg?token=ZYLB7FX5F9)](https://codecov.io/gh/jonbnewman/use-prompt)
+[![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
 ![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
 ![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
 
