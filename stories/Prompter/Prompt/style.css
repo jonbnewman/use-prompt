@@ -17,6 +17,7 @@
   display: block;
   float: left;
   transition: all 0.3s ease;
+  margin-top: 16px;
 }
 
 .prompt-container.visible {
@@ -28,6 +29,8 @@
   transform: scale(0.9);
   transform-origin: 50% 50%;
   transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 .prompt-container.visible .prompt-dialog {
