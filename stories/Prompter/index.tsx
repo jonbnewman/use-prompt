@@ -1,7 +1,7 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react';
 import usePrompt from '../../src';
-import Prompt from '../../src/prompts/Prompt';
-import MuiPrompt from '../../src/prompts/MuiPrompt';
+import { Prompt } from '../../src/prompts/Prompt';
+import { MuiPrompt } from '../../src/prompts/MuiPrompt';
 
 import Message from './Message';
 import Button from './Button';
