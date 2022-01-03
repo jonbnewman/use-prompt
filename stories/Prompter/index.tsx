@@ -14,7 +14,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Prompter: FC<Props> = (storybookProps) => {
-  const [outlet, showPrompt, visible] = usePrompt();
+  const [prompt, showPrompt, visible] = usePrompt();
 
   async function triggerPrompt() {
     try {
@@ -36,7 +36,7 @@ export const Prompter: FC<Props> = (storybookProps) => {
           Show prompt
         </Button>
       </div>
-      {outlet}
+      {prompt}
     </div>
   );
 };

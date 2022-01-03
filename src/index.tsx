@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-type PromptResponse = any;
-type RendererCallback = (props: {
+export type PromptResponse = any;
+export type RendererCallback = (prompt: {
   visible: boolean;
   resolve: (value: PromptResponse) => void;
   reject: (value?: PromptResponse) => void;
