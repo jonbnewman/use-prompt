@@ -31,3 +31,9 @@ ModalPrompt.args = {
   message: 'This is a modal prompt',
   type: 'modal',
 };
+
+export const InlinePrompt = Template.bind({});
+InlinePrompt.args = {
+  message: 'This is an inline prompt',
+  type: 'inline',
+};
