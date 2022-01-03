@@ -40,7 +40,12 @@ export const Prompter: FC<Props> = ({ component, ...storybookProps }) => {
         {visible ? 'Prompt is currently shown' : 'Prompt is currently hidden'}
       </Message>
       <div>
-        <Button variant="contained" onClick={triggerPrompt} disabled={visible}>
+        <Button
+          variant="contained"
+          onClick={triggerPrompt}
+          disabled={visible}
+          data-testid="show-prompt"
+        >
           Show prompt
         </Button>
       </div>

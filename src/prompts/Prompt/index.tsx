@@ -44,8 +44,12 @@ export function Prompt(props: PromptProps) {
       <div className="prompt-dialog" onClick={stopEvent}>
         <div className="prompt-message">{message}</div>
         <div className="prompt-buttons">
-          <button onClick={reject}>{rejectLabel}</button>
-          <button onClick={resolve}>{resolveLabel}</button>
+          <button onClick={reject} data-testid="reject-button">
+            {rejectLabel}
+          </button>
+          <button onClick={resolve} data-testid="resolve-button">
+            {resolveLabel}
+          </button>
         </div>
       </div>
     </div>

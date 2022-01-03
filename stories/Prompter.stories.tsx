@@ -47,7 +47,7 @@ StandardInlinePrompt.args = {
 
 export const MUIPrompt = Template.bind({});
 MUIPrompt.args = {
-  message: 'This is a modal prompt',
+  message: 'This is a MUI modal prompt',
   type: 'modal',
   component: 'mui',
 };
