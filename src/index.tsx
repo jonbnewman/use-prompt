@@ -1,38 +1,35 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
 type PromptResponse = any;
-type ValueCallback = (value?: PromptResponse) => void;
-type Renderer = (props: {
+type RendererCallback = (props: {
   visible: boolean;
-  resolve: ValueCallback;
-  reject: ValueCallback;
+  resolve: (value: PromptResponse) => void;
+  reject: (value?: PromptResponse) => void;
 }) => ReactNode;
 
 interface Prompt {
   state: 'pending' | 'hidden';
-  renderer: Renderer;
-  resolve: ValueCallback;
-  reject: ValueCallback;
+  renderer: RendererCallback;
+  resolve: (value: PromptResponse) => void;
+  reject: (value?: PromptResponse) => void;
 }
 
 /**
  * Use prompt hook
  * @returns [prompt, showPrompt, visible]
  */
-export default function usePrompt(): [
+function usePrompt(): [
   ReactNode,
-  (renderer: Renderer) => Promise<PromptResponse>,
+  (renderer: RendererCallback) => Promise<PromptResponse>,
   boolean
 ] {
+  const [visible, setVisible] = useState(false);
   const [prompt, setPrompt] = useState<Prompt>({
     state: 'hidden',
     renderer: () => null,
     resolve: () => {},
     reject: () => {},
   });
-
-  const [visible, setVisible] = useState(false);
-  useEffect(() => setVisible(prompt.state === 'pending'), [prompt]);
 
   function resolve(value?: PromptResponse) {
     prompt.resolve(value);
@@ -43,10 +40,12 @@ export default function usePrompt(): [
     setPrompt({ ...prompt, state: 'hidden' });
   }
 
+  useEffect(() => setVisible(prompt.state === 'pending'), [prompt]);
+
   return [
     prompt.renderer({ visible, resolve, reject }),
     (renderer) =>
-      new Promise((resolve, reject) =>
+      new Promise<PromptResponse>((resolve, reject) =>
         setPrompt({
           state: 'pending',
           renderer,
@@ -57,3 +56,5 @@ export default function usePrompt(): [
     visible,
   ];
 }
+
+export default usePrompt;

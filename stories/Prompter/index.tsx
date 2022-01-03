@@ -20,9 +20,8 @@ export const Prompter: FC<Props> = (storybookProps) => {
       const resolveReason = await showPrompt((props) => (
         <Prompt {...props} {...storybookProps} />
       ));
-      console.info('resolveReason', resolveReason);
     } catch (rejectReason) {
-      console.info('rejectReason', rejectReason);
+      // do nothing
     }
   }
 
