@@ -19,7 +19,7 @@
     "size": "size-limit",
     "start": "dts watch",
     "storybook": "start-storybook -p 6006",
-    "test": "dts test --passWithNoTests"
+    "test": "dts test --passWithNoTests --coverage"
   },
   "husky": {
     "hooks": {
@@ -37,7 +37,10 @@
     "moduleNameMapper": {
       "\\.(css|scss|sass|less)$": "<rootDir>/test/styleMock.js",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/prompts/*"
+    ]
   },
   "peerDependencies": {
     "react": ">=16"
