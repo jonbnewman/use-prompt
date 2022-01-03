@@ -10,7 +10,7 @@ This allows you to ask a user for input, display a message, or do whatever you w
 
 ## Installation
 
-**NOTE**: Not yet an NPM package, coming soon. See the [Release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
+**NOTE**: Not yet an NPM package, coming soon. See the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
 
 ```bash
 npm i use-prompt
