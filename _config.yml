@@ -1,1 +1,8 @@
-theme: jekyll-theme-midnight
+remote_theme: pmarsceill/just-the-docs
+color_scheme: "light"
+#logo: "/logo.png"
+heading_anchors: true
+footer_content: ""
+aux_links:
+  "view on GitHub":
+    - "//github.com/jonbnewman/use-prompt"
