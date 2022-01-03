@@ -7,9 +7,14 @@ const meta: Meta = {
   title: 'usePrompt',
   component: Prompter,
   argTypes: {
-    children: {
+    component: {
       control: {
-        type: 'text',
+        type: null,
+      },
+    },
+    type: {
+      control: {
+        type: null,
       },
     },
   },
