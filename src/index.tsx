@@ -17,7 +17,7 @@ interface Prompt {
 
 /**
  * Use prompt hook
- * @returns [outlet, showPrompt, visible]
+ * @returns [prompt, showPrompt, visible]
  */
 export default function usePrompt(): [
   ReactNode,
@@ -26,9 +26,9 @@ export default function usePrompt(): [
 ] {
   const [prompt, setPrompt] = useState<Prompt>({
     state: 'hidden',
+    renderer: () => null,
     resolve: () => {},
     reject: () => {},
-    renderer: () => null,
   });
 
   const [visible, setVisible] = useState(false);
@@ -48,10 +48,10 @@ export default function usePrompt(): [
     (renderer) =>
       new Promise((resolve, reject) =>
         setPrompt({
+          state: 'pending',
+          renderer,
           resolve,
           reject,
-          renderer,
-          state: 'pending',
         })
       ),
     visible,

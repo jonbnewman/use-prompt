@@ -18,6 +18,16 @@
 }
 
 .prompt-dialog {
+  transform: scale(0.9);
+  transform-origin: 50% 50%;
+  transition: all 0.2s ease;
+}
+.prompt-container.visible .prompt-dialog {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.prompt-dialog {
   padding: 16px;
   background: white;
   border-radius: 3px;
