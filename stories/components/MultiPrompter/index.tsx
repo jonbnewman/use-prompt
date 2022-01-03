@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, Fragment, HTMLAttributes } from 'react';
 import usePrompt from '../../../src';
 import { Prompt } from '../Prompt';
 
@@ -11,16 +11,17 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 export const MultiPrompter: FC<Props> = (storybookProps) => {
   const prompts = [usePrompt(), usePrompt(), usePrompt()];
 
-  function triggerPrompts() {
-    prompts.forEach(async ([, showPrompt], index) => {
+  async function triggerPrompts() {
+    for (let x = 0; x < prompts.length; x++) {
+      const [, showPrompt] = prompts[x];
       try {
         await showPrompt((props) => (
-          <Prompt {...props} type="inline" {...storybookProps} index={index} />
+          <Prompt {...props} type="inline" {...storybookProps} index={x} />
         ));
       } catch (reject) {
         // do nothing
       }
-    });
+    }
   }
 
   return (
@@ -34,7 +35,9 @@ export const MultiPrompter: FC<Props> = (storybookProps) => {
           Show prompt
         </Button>
       </div>
-      {prompt}
+      {prompts.map(([prompt], index) => (
+        <Fragment key={index}>{prompt}</Fragment>
+      ))}
     </>
   );
 };
