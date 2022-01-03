@@ -12,7 +12,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   rejectLabel?: string;
   escapable?: boolean;
   type?: 'modal' | 'inline';
-  component: 'standard' | 'mui';
+  component?: 'standard' | 'mui';
 }
 
 const promptComponents = {
@@ -26,7 +26,7 @@ export const Prompter: FC<Props> = ({ component, ...storybookProps }) => {
   async function triggerPrompt() {
     try {
       const resolveReason = await showPrompt((props) => {
-        const Prompt = promptComponents[component];
+        const Prompt = promptComponents[component || 'standard'];
         return <Prompt {...props} {...storybookProps} />;
       });
     } catch (rejectReason) {
