@@ -38,10 +38,7 @@ export default function Prompt(props: PromptProps) {
   }, [escapable, reject]);
 
   return (
-    <div
-      className={`prompt-container${visible ? ' visible' : ''}`}
-      onClick={reject}
-    >
+    <div className={`prompt-container${visible ? ' visible' : ''}`}>
       <div className="prompt-dialog" onClick={stopEvent}>
         <div className="prompt-message">{message}</div>
         <div className="prompt-buttons">

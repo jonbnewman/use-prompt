@@ -36,7 +36,24 @@
 .prompt-buttons {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-gap: 16px;
+  grid-gap: 8px;
   place-items: center end;
   margin-top: 16px;
+}
+
+.prompt-buttons button {
+  padding: 0 16px;
+  line-height: 35px;
+  border-radius: 3px;
+  border: none;
+  background: #dbdbdb;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.prompt-buttons button:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.prompt-buttons button:active {
+  background: #c7c7c7;
+  box-shadow: none;
 }
