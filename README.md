@@ -1,7 +1,8 @@
 # use-prompt
 
-![main workflow](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
+![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
 ![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
+![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
 
 **use-prompt** is a library that lets you conveniently display a React component to a user asynchronously.
 
