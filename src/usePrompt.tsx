@@ -14,17 +14,15 @@ interface Prompt {
   reject: (value?: PromptResponse) => void;
 }
 
-export type UsePrompt = [
-  ReactNode,
-  (renderer: RendererCallback) => Promise<PromptResponse>,
-  boolean
-];
-
 /**
  * Use prompt hook
  * @returns [prompt, showPrompt, visible]
  */
-export function usePrompt(): UsePrompt {
+export function usePrompt(): [
+  ReactNode,
+  (renderer: RendererCallback) => Promise<PromptResponse>,
+  boolean
+] {
   const [visible, setVisible] = useState(false);
   const [prompt, setPrompt] = useState<Prompt>({
     state: 'hidden',

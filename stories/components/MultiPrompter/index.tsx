@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react';
-import usePrompt, { UsePrompt } from '../../../src';
+import usePrompt from '../../../src';
 import { Prompt } from '../Prompt';
 
 import Button from './Button';
@@ -11,8 +11,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 export const MultiPrompter: FC<Props> = (storybookProps) => {
   const prompts = [usePrompt(), usePrompt(), usePrompt()];
 
-  async function triggerPrompts() {
-    prompts.forEach(async ([, showPrompt]: UsePrompt, index) => {
+  function triggerPrompts() {
+    prompts.forEach(async ([, showPrompt], index) => {
       try {
         await showPrompt((props) => (
           <Prompt {...props} type="inline" {...storybookProps} index={index} />
