@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export type PromptResponse = any;
 export type RendererCallback = (prompt: {
