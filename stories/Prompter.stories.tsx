@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Prompter, Props } from './Prompter';
-import Wrapper from './Wrapper';
+import { Prompter, Props } from './components/Prompter';
+import Wrapper from './components/Wrapper';
 
 const meta: Meta = {
   title: 'usePrompt',
@@ -31,23 +31,7 @@ const Template: Story<Props> = (args) => (
   </Wrapper>
 );
 
-export const StandardModalPrompt = Template.bind({});
-StandardModalPrompt.args = {
-  message: 'This is a modal prompt',
-  type: 'modal',
-  component: 'standard',
-};
-
-export const StandardInlinePrompt = Template.bind({});
-StandardInlinePrompt.args = {
-  message: 'This is an inline prompt',
-  type: 'inline',
-  component: 'standard',
-};
-
-export const MUIPrompt = Template.bind({});
-MUIPrompt.args = {
-  message: 'This is a MUI modal prompt',
-  type: 'modal',
-  component: 'mui',
-};
+export const ExamplePrompt = Template.bind({});
+// ExamplePrompt.args = {
+//   message: 'This is a modal prompt',
+// };

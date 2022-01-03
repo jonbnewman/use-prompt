@@ -1,32 +1,18 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import usePrompt from '../../src';
-import { Prompt } from '../../src/prompts/Prompt';
-import { MuiPrompt } from '../../src/prompts/MuiPrompt';
+import React, { FC, HTMLAttributes } from 'react';
+import usePrompt from '../../../src';
+import { Prompt } from '../Prompt';
 
 import Message from './Message';
 import Button from './Button';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  message?: ReactNode;
-  resolveLabel?: string;
-  rejectLabel?: string;
-  escapable?: boolean;
-  type?: 'modal' | 'inline';
-  component?: 'standard' | 'mui';
-}
+export interface Props extends HTMLAttributes<HTMLDivElement> {}
 
-const promptComponents = {
-  standard: Prompt,
-  mui: MuiPrompt,
-};
-
-export const Prompter: FC<Props> = ({ component, ...storybookProps }) => {
+export const Prompter: FC<Props> = (storybookProps) => {
   const [prompt, showPrompt, visible] = usePrompt();
 
   async function triggerPrompt() {
     try {
       const resolveReason = await showPrompt((props) => {
-        const Prompt = promptComponents[component || 'standard'];
         return <Prompt {...props} {...storybookProps} />;
       });
     } catch (rejectReason) {

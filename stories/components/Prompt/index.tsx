@@ -1,4 +1,5 @@
-import React, { MouseEvent, ReactNode, useEffect } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
+import Modal from '@mui/material/Modal';
 
 import './style.css';
 
@@ -11,6 +12,7 @@ export interface PromptProps {
   resolveLabel?: string;
   rejectLabel?: string;
   escapable?: boolean;
+  index?: number;
 }
 
 function stopEvent(event: MouseEvent<HTMLDivElement>) {
@@ -23,25 +25,16 @@ export function Prompt(props: PromptProps) {
     resolve,
     reject,
     escapable = true,
-    type = 'modal',
     message = 'Are you sure?',
     resolveLabel = 'Confirm',
     rejectLabel = 'Cancel',
+    index,
   } = props;
 
-  useEffect(() => {
-    function escapeCheck(event: KeyboardEvent) {
-      if (escapable && event.key === 'Escape') {
-        reject();
-      }
-    }
-    document.addEventListener('keyup', escapeCheck);
-    return () => document.removeEventListener('keyup', escapeCheck);
-  }, [escapable, reject]);
-
   return (
-    <div className={`${type} prompt-container${visible ? ' visible' : ''}`}>
+    <Modal open={visible} onClose={reject} disableEscapeKeyDown={!escapable}>
       <div className="prompt-dialog" onClick={stopEvent}>
+        {index ? <div>Prompt {index}</div> : null}
         <div className="prompt-message">{message}</div>
         <div className="prompt-buttons">
           <button onClick={reject} data-testid="reject-button">
@@ -52,6 +45,6 @@ export function Prompt(props: PromptProps) {
           </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
