@@ -4,11 +4,13 @@
 
 This allows you to ask a user for input, display a message, or do whatever you want in an asynchronous manner. It supports N-number of concurrent prompt support, and allows you to render anywhere you like.
 
+### Coming soon, see the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
+
 ---
 
 ## Installation
 
-**NOTE**: Not yet an NPM package, coming soon.
+**NOTE**: Not yet an NPM package, coming soon. See the [Release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
 
 ```bash
 npm i use-prompt
