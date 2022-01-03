@@ -1,0 +1,72 @@
+.prompt-container.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.prompt-container.inline {
+  opacity: 0;
+  display: block;
+  float: left;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.prompt-container.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.prompt-dialog {
+  transform: scale(0.9);
+  transform-origin: 50% 50%;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.prompt-container.visible .prompt-dialog {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.prompt-dialog {
+  padding: 16px;
+  background: white;
+  border-radius: 3px;
+}
+
+.prompt-buttons {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 8px;
+  place-items: center end;
+  margin-top: 16px;
+}
+
+.prompt-buttons button {
+  padding: 0 16px;
+  line-height: 35px;
+  border-radius: 3px;
+  border: none;
+  background: #dbdbdb;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.prompt-buttons button:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.prompt-buttons button:active {
+  background: #c7c7c7;
+  box-shadow: none;
+}

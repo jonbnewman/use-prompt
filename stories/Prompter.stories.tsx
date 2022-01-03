@@ -26,14 +26,23 @@ const Template: Story<Props> = (args) => (
   </Wrapper>
 );
 
-export const ModalPrompt = Template.bind({});
-ModalPrompt.args = {
+export const StandardModalPrompt = Template.bind({});
+StandardModalPrompt.args = {
   message: 'This is a modal prompt',
   type: 'modal',
+  component: 'standard',
 };
 
-export const InlinePrompt = Template.bind({});
-InlinePrompt.args = {
+export const StandardInlinePrompt = Template.bind({});
+StandardInlinePrompt.args = {
   message: 'This is an inline prompt',
   type: 'inline',
+  component: 'standard',
+};
+
+export const MUIPrompt = Template.bind({});
+MUIPrompt.args = {
+  message: 'This is a modal prompt',
+  type: 'modal',
+  component: 'mui',
 };

@@ -17,7 +17,7 @@ function stopEvent(event: MouseEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export default function Prompt(props: PromptProps) {
+export function Prompt(props: PromptProps) {
   const {
     visible,
     resolve,
