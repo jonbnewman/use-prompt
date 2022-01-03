@@ -1,8 +1,14 @@
 # use-prompt
 
-**use-prompt** is a library that lets you conveniently display a component to a user asynchronously.
+**use-prompt** is a library that lets you conveniently display a React component to a user asynchronously.
 
-This allows you to ask a user for input, display a message, or do whatever you want in an asynchronous manner. It supports N-number of concurrent prompt support, and allows you to render anywhere you like.
+This allows you to ask a user for input, prompt for an answer, display a message, or do whatever you want in an asynchronous manner.
+
+Features:
+
+- Promise-based (async and try/catch capable)
+- N-number of concurrent prompt support
+- Render anywhere you like.
 
 ### Coming soon, see the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
 
