@@ -6,8 +6,8 @@ This allows you to ask a user for input, prompt for an answer, display a message
 
 Features:
 
-- Promise-based (async and try/catch capable)
-- N-number of concurrent prompt support
+- Promise-based (async and try/catch capable).
+- N-number of concurrent prompt support.
 - Render anywhere you like.
 
 ### Coming soon, see the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
