@@ -16,12 +16,15 @@ interface Prompt {
 }
 
 /**
- * Create a prompt.
+ * React hook to create a prompt.
+ *
+ * Options:
+ * * **persist** - if *true*, the resolved/rejected prompts will remain in the DOM
  *
  * Returns an Array containing:
- * * prompt - the rendered output
- * * showPrompt - callback used to trigger/open the prompt
- * * visible - boolean indicating if the prompt is displayed currently
+ * * **prompt** - the rendered output
+ * * **showPrompt** - callback used to trigger/open the prompt
+ * * **visible** - boolean indicating if the prompt is displayed currently
  * @returns [prompt, showPrompt, visible]
  */
 export function usePrompt(options: {
