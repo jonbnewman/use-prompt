@@ -28,7 +28,7 @@ interface Prompt {
  * @param options Options object
  * @returns [prompt, showPrompt, visible]
  */
-export function usePrompt(options: {
+export function usePrompt(options?: {
   persist?: boolean;
 }): [ReactNode, (renderer: Renderer) => Promise<Response>, boolean] {
   const [visible, setVisible] = useState(false);
@@ -56,7 +56,7 @@ export function usePrompt(options: {
   }, [prompt]);
 
   return [
-    options.persist || visible
+    options?.persist || visible
       ? prompt.renderer({ visible, resolve, reject })
       : null,
     (renderer) =>
