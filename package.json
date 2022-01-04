@@ -1,6 +1,6 @@
 {
   "name": "use-prompt",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "license": "MIT",
   "author": "Jonathan Newman",
   "description": "Display a react component to a user asynchronously",
