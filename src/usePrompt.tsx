@@ -1,17 +1,18 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-export type PromptResponse = any;
-export type RendererCallback = (prompt: {
+export interface RenderOptions {
   visible: boolean;
-  resolve: (value: PromptResponse) => void;
-  reject: (value?: PromptResponse) => void;
-}) => ReactNode;
+  resolve: (value: Response) => void;
+  reject: (value?: Response) => void;
+}
+export type Response = any;
+type Renderer = (prompt: RenderOptions) => ReactNode;
 
 interface Prompt {
   state: 'pending' | 'hidden';
-  renderer: RendererCallback;
-  resolve: (value: PromptResponse) => void;
-  reject: (value?: PromptResponse) => void;
+  renderer: Renderer;
+  resolve: (value: Response) => void;
+  reject: (value?: Response) => void;
 }
 
 /**
@@ -20,7 +21,7 @@ interface Prompt {
  */
 export function usePrompt(): [
   ReactNode,
-  (renderer: RendererCallback) => Promise<PromptResponse>,
+  (renderer: Renderer) => Promise<Response>,
   boolean
 ] {
   const [visible, setVisible] = useState(false);
@@ -31,11 +32,11 @@ export function usePrompt(): [
     reject: () => {},
   });
 
-  function resolve(value?: PromptResponse) {
+  function resolve(value?: Response) {
     prompt.resolve(value);
     setPrompt({ ...prompt, state: 'hidden' });
   }
-  function reject(value?: PromptResponse) {
+  function reject(value?: Response) {
     prompt.reject(value);
     setPrompt({ ...prompt, state: 'hidden' });
   }
@@ -50,7 +51,7 @@ export function usePrompt(): [
   return [
     prompt.renderer({ visible, resolve, reject }),
     (renderer) =>
-      new Promise<PromptResponse>((resolve, reject) =>
+      new Promise<Response>((resolve, reject) =>
         setPrompt({
           state: 'pending',
           renderer,
