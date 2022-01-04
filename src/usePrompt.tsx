@@ -1,9 +1,8 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 export type Response = any;
-export type Renderer = (prompt: RenderParams) => ReactNode;
-
-export interface RenderParams {
+export type Renderer = (props: RenderProps) => ReactNode;
+export interface RenderProps {
   visible: boolean;
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
@@ -17,14 +16,17 @@ interface Prompt {
 }
 
 /**
- * Use prompt hook
+ * Create a prompt.
+ *
+ * Returns an Array containing:
+ * * prompt - the rendered output
+ * * showPrompt - callback used to trigger/open the prompt
+ * * visible - boolean indicating if the prompt is displayed currently
  * @returns [prompt, showPrompt, visible]
  */
-export function usePrompt(): [
-  ReactNode,
-  (renderer: Renderer) => Promise<Response>,
-  boolean
-] {
+export function usePrompt(options: {
+  persist?: boolean;
+}): [ReactNode, (renderer: Renderer) => Promise<Response>, boolean] {
   const [visible, setVisible] = useState(false);
   const [prompt, setPrompt] = useState<Prompt>({
     state: 'hidden',
@@ -50,7 +52,9 @@ export function usePrompt(): [
   }, [prompt]);
 
   return [
-    prompt.renderer({ visible, resolve, reject }),
+    options.persist || visible
+      ? prompt.renderer({ visible, resolve, reject })
+      : null,
     (renderer) =>
       new Promise<Response>((resolve, reject) =>
         setPrompt({
