@@ -82,6 +82,45 @@ describe('Modal Prompt', () => {
     fireEvent.click(getByTestId('resolve-button0'));
     await waitFor(() => {
       expect(button).toHaveAttribute('disabled');
+      expect(queryByText('Prompt 0')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 1')).toBeInTheDocument();
+      expect(queryByText('Prompt 2')).not.toBeInTheDocument();
+    });
+
+    fireEvent.click(getByTestId('resolve-button1'));
+    await waitFor(() => {
+      expect(button).toHaveAttribute('disabled');
+      expect(queryByText('Prompt 0')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 1')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 2')).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByTestId('resolve-button2'));
+    await waitFor(() => {
+      expect(button).not.toHaveAttribute('disabled');
+      expect(queryByText('Prompt 0')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 1')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 2')).not.toBeInTheDocument();
+    });
+  });
+
+  it('can render multiple prompts in a persistent way', async () => {
+    const { queryByText, getByTestId } = render(<MultiPrompter persist />);
+
+    const button = getByTestId('show-prompts');
+    expect(button).not.toHaveAttribute('disabled');
+
+    fireEvent.click(button);
+    await waitFor(() => {
+      expect(button).toHaveAttribute('disabled');
+      expect(queryByText('Prompt 0')).toBeInTheDocument();
+      expect(queryByText('Prompt 1')).not.toBeInTheDocument();
+      expect(queryByText('Prompt 2')).not.toBeInTheDocument();
+    });
+
+    fireEvent.click(getByTestId('resolve-button0'));
+    await waitFor(() => {
+      expect(button).toHaveAttribute('disabled');
       expect(queryByText('Prompt 0')).not.toBeVisible();
       expect(queryByText('Prompt 1')).toBeInTheDocument();
       expect(queryByText('Prompt 2')).not.toBeInTheDocument();

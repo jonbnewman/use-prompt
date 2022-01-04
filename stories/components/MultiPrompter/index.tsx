@@ -5,11 +5,15 @@ import Prompt from './Prompt';
 import Button from './Button';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  type?: 'modal' | 'inline';
+  persist?: boolean;
 }
 
-export const MultiPrompter: FC<Props> = (storybookProps) => {
-  const prompts = [usePrompt(), usePrompt(), usePrompt()];
+export const MultiPrompter: FC<Props> = ({ persist, ...storybookProps }) => {
+  const prompts = [
+    usePrompt({ persist }),
+    usePrompt({ persist }),
+    usePrompt({ persist }),
+  ];
 
   async function triggerPrompts() {
     for (let x = 0; x < prompts.length; x++) {
