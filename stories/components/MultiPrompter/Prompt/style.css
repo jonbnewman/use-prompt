@@ -13,11 +13,12 @@
 }
 
 .prompt-container.inline {
-  opacity: 0;
   display: block;
   float: left;
   transition: all 0.3s ease;
   margin-top: 16px;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .prompt-container.visible {

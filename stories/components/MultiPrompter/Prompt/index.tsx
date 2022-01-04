@@ -1,7 +1,11 @@
 import React, { MouseEvent, ReactNode } from 'react';
-import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
 
-import './style.css';
+import Container from './Container';
+import Dialog from './Dialog';
+import Message from './Message';
+import Buttons from './Buttons';
+import PromptId from './PromptId';
 
 export interface PromptProps {
   type?: 'modal' | 'inline';
@@ -30,22 +34,31 @@ export default function Prompt(props: PromptProps) {
   } = props;
 
   return (
-    <div
-      onClick={reject}
-      className={`prompt-container inline${visible ? ' visible' : ''}`}
-    >
-      <div className="prompt-dialog" onClick={stopEvent}>
-        {typeof index !== 'undefined' ? <div>Prompt {index}</div> : null}
-        <div className="prompt-message">{message}</div>
-        <div className="prompt-buttons">
-          <button onClick={reject} data-testid="reject-button">
+    <Container onClick={reject} visible={visible}>
+      <Dialog onClick={stopEvent} visible={visible}>
+        {typeof index !== 'undefined' ? (
+          <PromptId>Prompt {index}</PromptId>
+        ) : null}
+        <Message>{message}</Message>
+        <Buttons>
+          <Button
+            onClick={reject}
+            variant="contained"
+            disableElevation
+            data-testid="reject-button"
+          >
             {rejectLabel}
-          </button>
-          <button onClick={resolve} data-testid="resolve-button">
+          </Button>
+          <Button
+            onClick={resolve}
+            variant="contained"
+            disableElevation
+            data-testid="resolve-button"
+          >
             {resolveLabel}
-          </button>
-        </div>
-      </div>
-    </div>
+          </Button>
+        </Buttons>
+      </Dialog>
+    </Container>
   );
 }
