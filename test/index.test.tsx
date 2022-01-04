@@ -98,6 +98,9 @@ describe('Modal Prompt', () => {
     fireEvent.click(getByTestId('resolve-button2'));
     await waitFor(() => {
       expect(button).not.toHaveAttribute('disabled');
+      expect(queryByText('Prompt 0')).not.toBeVisible();
+      expect(queryByText('Prompt 1')).not.toBeVisible();
+      expect(queryByText('Prompt 2')).not.toBeVisible();
     });
   });
 });
