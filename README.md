@@ -121,13 +121,13 @@ function App() {
   const [prompt2, showPrompt2, visible2] = usePrompt();
   const [prompt3, showPrompt3, visible3] = usePrompt();
 
-  function showPrompt1(showPrompt, message) {
+  function showPrompt1() {
     showPrompt((props) => <Prompt {...props} message="Prompt1" />);
   }
-  function showPrompt2(showPrompt, message) {
+  function showPrompt2() {
     showPrompt((props) => <Prompt {...props} message="Prompt2" />);
   }
-  function showPrompt3(showPrompt, message) {
+  function showPrompt3() {
     showPrompt((props) => <Prompt {...props} message="Prompt3" />);
   }
 
