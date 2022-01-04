@@ -11,7 +11,6 @@ export interface PromptProps {
   message?: ReactNode;
   resolveLabel?: string;
   rejectLabel?: string;
-  escapable?: boolean;
   index?: number;
 }
 
@@ -19,12 +18,11 @@ function stopEvent(event: MouseEvent<HTMLDivElement>) {
   event.stopPropagation();
 }
 
-export function Prompt(props: PromptProps) {
+export default function Prompt(props: PromptProps) {
   const {
     visible,
     resolve,
     reject,
-    escapable = true,
     message = 'Are you sure?',
     resolveLabel = 'Confirm',
     rejectLabel = 'Cancel',
@@ -32,9 +30,12 @@ export function Prompt(props: PromptProps) {
   } = props;
 
   return (
-    <Modal open={visible} onClose={reject} disableEscapeKeyDown={!escapable}>
+    <div
+      onClick={reject}
+      className={`prompt-container inline${visible ? ' visible' : ''}`}
+    >
       <div className="prompt-dialog" onClick={stopEvent}>
-        {index ? <div>Prompt {index}</div> : null}
+        {typeof index !== 'undefined' ? <div>Prompt {index}</div> : null}
         <div className="prompt-message">{message}</div>
         <div className="prompt-buttons">
           <button onClick={reject} data-testid="reject-button">
@@ -45,6 +46,6 @@ export function Prompt(props: PromptProps) {
           </button>
         </div>
       </div>
-    </Modal>
+    </div>
   );
 }

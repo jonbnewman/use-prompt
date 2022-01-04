@@ -1,7 +1,7 @@
 import React, { FC, Fragment, HTMLAttributes } from 'react';
 import usePrompt from '../../../src';
-import { Prompt } from '../Prompt';
 
+import Prompt from './Prompt';
 import Button from './Button';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -16,7 +16,7 @@ export const MultiPrompter: FC<Props> = (storybookProps) => {
       const [, showPrompt] = prompts[x];
       try {
         await showPrompt((props) => (
-          <Prompt {...props} type="inline" {...storybookProps} index={x} />
+          <Prompt {...props} {...storybookProps} index={x} />
         ));
       } catch (reject) {
         // do nothing
@@ -24,12 +24,17 @@ export const MultiPrompter: FC<Props> = (storybookProps) => {
     }
   }
 
+  const disabled = prompts.reduce((acc, [, , prompting]) => {
+    return acc || prompting;
+  }, false);
+
   return (
     <>
       <div>
         <Button
           variant="contained"
           onClick={triggerPrompts}
+          disabled={disabled}
           data-testid="show-prompt"
         >
           Show prompt

@@ -1,7 +1,7 @@
 import React, { FC, HTMLAttributes } from 'react';
 import usePrompt from '../../../src';
-import { Prompt } from '../Prompt';
 
+import Prompt from './Prompt';
 import Message from './Message';
 import Button from './Button';
 
