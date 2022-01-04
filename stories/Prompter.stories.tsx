@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Prompter, Props } from './components/Prompter';
+import { Prompter as PrompterComponent, Props } from './components/Prompter';
 import Wrapper from './components/Wrapper';
 
 const meta: Meta = {
   title: 'usePrompt',
-  component: Prompter,
+  component: PrompterComponent,
   parameters: {
     controls: { expanded: true },
   },
@@ -15,11 +15,11 @@ export default meta;
 
 const Template: Story<Props> = (args) => (
   <Wrapper>
-    <Prompter {...args} />
+    <PrompterComponent {...args} />
   </Wrapper>
 );
 
-export const ExamplePrompt = Template.bind({});
-// ExamplePrompt.args = {
+export const Prompter = Template.bind({});
+// Prompter.args = {
 //   message: 'This is a modal prompt',
 // };

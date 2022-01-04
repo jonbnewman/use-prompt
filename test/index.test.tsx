@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, waitFor, cleanup, fireEvent } from '@testing-library/react';
 
-import { ExamplePrompt } from '../stories/ExamplePrompter.stories';
+import { Prompter } from '../stories/Prompter.stories';
 
 describe('Modal Prompt', () => {
   afterEach(() => {
@@ -10,7 +10,7 @@ describe('Modal Prompt', () => {
   });
 
   it('can show a prompt', async () => {
-    const { queryByText, getByTestId } = render(<ExamplePrompt />);
+    const { queryByText, getByTestId } = render(<Prompter />);
 
     await waitFor(() => {
       expect(queryByText('Prompt is currently hidden')).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe('Modal Prompt', () => {
   });
 
   it('can resolve a prompt', async () => {
-    const { queryByText, getByTestId } = render(<ExamplePrompt />);
+    const { queryByText, getByTestId } = render(<Prompter />);
 
     fireEvent.click(getByTestId('show-prompt'));
     await waitFor(() => {
@@ -37,7 +37,7 @@ describe('Modal Prompt', () => {
   });
 
   it('can reject a prompt', async () => {
-    const { queryByText, getByTestId } = render(<ExamplePrompt />);
+    const { queryByText, getByTestId } = render(<Prompter />);
 
     fireEvent.click(getByTestId('show-prompt'));
     await waitFor(() => {
