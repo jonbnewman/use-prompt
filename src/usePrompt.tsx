@@ -1,12 +1,13 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-export interface RenderOptions {
+export type Response = any;
+export type Renderer = (prompt: RenderParams) => ReactNode;
+
+export interface RenderParams {
   visible: boolean;
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
 }
-export type Response = any;
-type Renderer = (prompt: RenderOptions) => ReactNode;
 
 interface Prompt {
   state: 'pending' | 'hidden';
