@@ -15,8 +15,6 @@ export default styled.div<{ visible: boolean }>`
   display: block;
   float: left;
   margin-top: ${({ theme }) => theme.spacing(2)};
-  visibility: hidden;
-  opacity: 0;
   transition: all 0.3s ease;
 
   ${({ visible }) => (visible ? visibleStyles : hiddenStyles)}

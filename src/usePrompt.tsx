@@ -40,7 +40,11 @@ export function usePrompt(): [
     setPrompt({ ...prompt, state: 'hidden' });
   }
 
-  useEffect(() => setVisible(prompt.state === 'pending'), [prompt]);
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(prompt.state === 'pending');
+    });
+  }, [prompt]);
 
   return [
     prompt.renderer({ visible, resolve, reject }),

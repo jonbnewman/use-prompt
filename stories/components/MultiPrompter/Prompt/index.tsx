@@ -8,7 +8,6 @@ import Buttons from './Buttons';
 import PromptId from './PromptId';
 
 export interface PromptProps {
-  type?: 'modal' | 'inline';
   visible: boolean;
   resolve: (value?: any) => void;
   reject: (value?: any) => void;
@@ -36,9 +35,7 @@ export default function Prompt(props: PromptProps) {
   return (
     <Container onClick={reject} visible={visible}>
       <Dialog onClick={stopEvent} visible={visible}>
-        {typeof index !== 'undefined' ? (
-          <PromptId>Prompt {index}</PromptId>
-        ) : null}
+        <PromptId>Prompt {index}</PromptId>
         <Message>{message}</Message>
         <Buttons>
           <Button
