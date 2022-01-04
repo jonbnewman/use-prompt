@@ -2,8 +2,10 @@
 
 ![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main&r=1)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
-![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
+
+[![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
 ![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
+![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
 
 **use-prompt** is a library that lets you conveniently display a React component to a user asynchronously.
 
