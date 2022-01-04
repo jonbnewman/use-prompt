@@ -41,9 +41,10 @@ export function usePrompt(): [
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const hideTimeout = setTimeout(() => {
       setVisible(prompt.state === 'pending');
     });
+    return () => clearTimeout(hideTimeout);
   }, [prompt]);
 
   return [
