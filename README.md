@@ -13,17 +13,13 @@ This allows you to ask a user for input, prompt for an answer, display a message
 
 Features:
 
-- Promise-based (async and try/catch capable).
+- Promise-based (async/await and try/catch capable).
 - N-number of concurrent prompt support.
 - Render anywhere you like.
-
-### Coming soon, see the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
 
 ---
 
 ## Installation
-
-**NOTE**: Not yet an NPM package, coming soon. See the [release milestone](https://github.com/jonbnewman/use-prompt/milestone/1).
 
 ```bash
 npm i use-prompt
@@ -35,6 +31,30 @@ yarn add use-prompt
 
 ## Basic example
 
-The following shows an example application using **use-prompt**.
+```javascript
+import usePrompt from 'use-prompt';
 
-TODO
+function App() {
+  const [prompt, showPrompt, visible] = usePrompt();
+
+  async function showMyPrompt() {
+    const response = await showPrompt(({ resolve }) => (
+      <div>
+        <div>Hello</div>
+        <div>
+          <button onClick={resolve}>Yes</button>
+        </div>
+      </div>
+    ));
+  }
+
+  return (
+    <div>
+      <button onClick={showMyPrompt} disabled={visible}>
+        Show prompt
+      </button>
+      {prompt}
+    </div>
+  );
+}
+```
