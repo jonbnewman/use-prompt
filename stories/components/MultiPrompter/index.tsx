@@ -35,7 +35,7 @@ export const MultiPrompter: FC<Props> = (storybookProps) => {
           variant="contained"
           onClick={triggerPrompts}
           disabled={disabled}
-          data-testid="show-prompt"
+          data-testid="show-prompts"
         >
           Show prompt
         </Button>

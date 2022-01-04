@@ -42,7 +42,7 @@ export default function Prompt(props: PromptProps) {
             onClick={reject}
             variant="contained"
             disableElevation
-            data-testid="reject-button"
+            data-testid={`reject-button${index}`}
           >
             {rejectLabel}
           </Button>
@@ -50,7 +50,7 @@ export default function Prompt(props: PromptProps) {
             onClick={resolve}
             variant="contained"
             disableElevation
-            data-testid="resolve-button"
+            data-testid={`resolve-button${index}`}
           >
             {resolveLabel}
           </Button>
