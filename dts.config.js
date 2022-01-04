@@ -17,6 +17,10 @@ module.exports = {
         extract: !!options.writeMeta,
       })
     );
+
+    console.info('options.format', options.format);
+    // options.format = '';
+
     return config;
   },
 };
