@@ -1,13 +1,13 @@
 {
   "name": "use-prompt",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "license": "MIT",
   "author": "Jonathan Newman",
   "description": "Display a react component to a user asynchronously",
   "homepage": "https://useprompt.jonbnewman.dev/",
   "main": "dist/index.js",
   "module": "dist/use-prompt.esm.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist/**/*"
   ],
