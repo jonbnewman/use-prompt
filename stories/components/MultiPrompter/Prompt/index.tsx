@@ -5,7 +5,6 @@ import Container from './Container';
 import Dialog from './Dialog';
 import Message from './Message';
 import Buttons from './Buttons';
-import PromptId from './PromptId';
 
 export interface PromptProps {
   visible: boolean;
@@ -35,7 +34,7 @@ export default function Prompt(props: PromptProps) {
   return (
     <Container onClick={reject} visible={visible}>
       <Dialog onClick={stopEvent} visible={visible}>
-        <PromptId>Prompt {index}</PromptId>
+        <div>Prompt {index}</div>
         <Message>{message}</Message>
         <Buttons>
           <Button

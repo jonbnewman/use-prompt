@@ -10,6 +10,7 @@ export default styled.div<{ visible: boolean }>`
   grid-gap: ${({ theme }) => theme.spacing(2)};
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  padding: ${({ theme }) => theme.spacing(2)};
 
   transform-origin: 50% 50%;
   transform: scale(0.9);
