@@ -11,6 +11,15 @@
   "files": [
     "dist/**/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonbnewman/use-prompt.git"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "functional"
+  ],
   "scripts": {
     "analyze": "size-limit --why",
     "build": "dts build",
