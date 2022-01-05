@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Persistant prompts and custom animations
+title: Persistant prompts
 nav_order: 5
 parent: Examples
 ---
