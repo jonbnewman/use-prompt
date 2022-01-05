@@ -13,12 +13,12 @@ This allows you to ask a user for input, prompt for an answer, display a message
 
 Features:
 
-- Promise-based (async/await and try/catch capable).
-- N-number of concurrent prompt support.
-- Render anywhere you like for each prompt.
-- Typescript support.
-- Minimalistic, easy to use API.
-- Very small bundle size.
+- Promise-based (async/await and try/catch capable)
+- N-number of concurrent prompt support
+- Render anywhere you like for each prompt
+- Typescript support
+- Minimalistic, easy to use API
+- Very small bundle size
 
 ---
 
