@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Persistant prompts
-nav_order: 6
+nav_order: 5
+parent: Examples
 ---
 
 # Persistant prompts
