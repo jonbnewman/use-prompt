@@ -17,7 +17,7 @@ interface Prompt {
 
 enum STATE {
   HIDDEN,
-  PENDING,
+  VISIBLE,
 }
 
 /**
@@ -55,7 +55,7 @@ export function usePrompt(options?: {
 
   useEffect(() => {
     const setVisibleTimeout = setTimeout(() => {
-      setVisible(prompt.state === STATE.PENDING);
+      setVisible(prompt.state === STATE.VISIBLE);
     });
     return () => clearTimeout(setVisibleTimeout);
   }, [prompt]);
@@ -67,7 +67,7 @@ export function usePrompt(options?: {
     (renderer) =>
       new Promise<Response>((resolve, reject) =>
         setPrompt({
-          state: STATE.PENDING,
+          state: STATE.VISIBLE,
           renderer,
           resolve,
           reject,
