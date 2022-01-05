@@ -7,7 +7,7 @@
 ![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
 ![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
 
-**use-prompt** is a library that lets you conveniently display a React component to a user asynchronously.
+**use-prompt** is a [React Hook](https://reactjs.org/docs/hooks-intro.html) that lets you conveniently display a React component to a user asynchronously.
 
 This allows you to ask a user for input, prompt for an answer, display a message, or do whatever you want in an asynchronous manner.
 
@@ -30,6 +30,8 @@ yarn add use-prompt
 ```
 
 ## Basic example
+
+The following demonstrates the most basic example use of `usePrompt` possible.
 
 ```javascript
 import usePrompt from 'use-prompt';
@@ -59,7 +61,7 @@ function App() {
 
 ### async/await and try/catch
 
-This example demonstrates how to use async/await and try/catch in order to retrieve what their response within the prompt was.
+This example demonstrates how to use async/await and try/catch in order to retrieve what the users response within the prompt was.
 
 ```javascript
 import { useState } from 'react';
@@ -122,13 +124,13 @@ function App() {
   const [prompt3, showPrompt3, visible3] = usePrompt();
 
   function showPrompt1() {
-    showPrompt((props) => <Prompt {...props} message="Prompt1" />);
+    showPrompt1((props) => <Prompt {...props} message="Prompt1" />);
   }
   function showPrompt2() {
-    showPrompt((props) => <Prompt {...props} message="Prompt2" />);
+    showPrompt2((props) => <Prompt {...props} message="Prompt2" />);
   }
   function showPrompt3() {
-    showPrompt((props) => <Prompt {...props} message="Prompt3" />);
+    showPrompt3((props) => <Prompt {...props} message="Prompt3" />);
   }
 
   return (
@@ -151,3 +153,7 @@ function App() {
   );
 }
 ```
+
+---
+
+**[See the full docs](https://useprompt.jonbnewman.dev)**
