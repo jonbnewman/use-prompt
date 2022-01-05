@@ -8,16 +8,16 @@ export interface RenderProps {
   reject: (value?: Response) => void;
 }
 
+enum STATE {
+  HIDDEN,
+  VISIBLE,
+}
+
 interface Prompt {
   state: STATE;
   renderer: Renderer;
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
-}
-
-enum STATE {
-  HIDDEN,
-  VISIBLE,
 }
 
 /**
