@@ -27,7 +27,7 @@ function Prompt({ resolve, reject, visible }: RenderProps) {
 }
 
 function App() {
-  const [prompt, setPrompt, visible] = usePrompt();
+  const [prompt, setPrompt, visible] = usePrompt({ persist: true });
 
   function showPrompt() {
     setPrompt((props) => <Prompt {...props} />);
