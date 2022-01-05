@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Examples
+title: API
 nav_order: 2
 ---
 
