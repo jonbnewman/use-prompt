@@ -59,7 +59,7 @@ function App() {
 }
 ```
 
-### async/await and try/catch
+### Async/await and try/catch
 
 This example demonstrates how to use async/await and try/catch in order to retrieve what the users response within the prompt was.
 
@@ -143,8 +143,6 @@ function App() {
 ## Multiple concurrent prompts
 
 Rendering multiple concurrent prompts is supported.
-
-Each new instance/use of usePrompt is separate from the rest.
 
 ```javascript
 import usePrompt from 'use-prompt';
