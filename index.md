@@ -1,3 +1,9 @@
+---
+layout: default
+title: Introduction
+nav_order: 1
+---
+
 # use-prompt
 
 ![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
