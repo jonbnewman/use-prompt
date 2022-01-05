@@ -8,9 +8,13 @@ nav_order: 6
 
 You might want to use the `persist` option to more directly control hiding/displaying the prompt. Doing this will allow you to display and hide the prompt when/how you choose.
 
-When `persist` is **not** `true` (the default), the prompt is completely added and removed from the DOM.
+- `persist` is **not** `true` (the default)
 
-When `persist` is `true`, the prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
+  The prompt is completely added and removed from the DOM.
+
+- `persist` is `true`
+
+  The prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
 
 ```javascript
 import usePrompt from "use-prompt";
