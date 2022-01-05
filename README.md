@@ -69,8 +69,8 @@ import usePrompt from 'use-prompt';
 
 function App() {
   const [prompt, showPrompt, visible] = usePrompt();
-  const [cancelled, setCancelled] = useState(null);
-  const [confirmed, setConfirmed] = useState(null);
+  const [cancelReason, setCancelReason] = useState(null);
+  const [confirmResponse, setConfirmResponse] = useState(null);
 
   async function showMyPrompt() {
     try {
@@ -81,9 +81,9 @@ function App() {
           <button onClick={() => resolve('clicked yes')}>Yes</button>
         </>
       ));
-      setConfirmed(true);
+      setConfirmResponse(response);
     } catch (reason) {
-      setCancelled(reason);
+      setCancelReason(reason);
     }
   }
 
@@ -93,8 +93,8 @@ function App() {
         Show prompt
       </button>
       {prompt}
-      {confirmed && `Prompt was confirmed: ${confirmed}`}
-      {cancelled && `Prompt was cancelled: ${cancelled}`}
+      {confirmResponse && `Prompt was confirmed: ${confirmResponse}`}
+      {cancelReason && `Prompt was cancelled: ${cancelReason}`}
     </>
   );
 }
