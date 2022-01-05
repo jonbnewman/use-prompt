@@ -49,6 +49,7 @@ yarn add use-prompt
 
 ![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main&r=1)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3122dfe36f8442894cfc239be96d056)](https://www.codacy.com/gh/jonbnewman/use-prompt/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jonbnewman/use-prompt&utm_campaign=Badge_Grade)
 
 [![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
 ![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
