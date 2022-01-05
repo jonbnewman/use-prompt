@@ -16,9 +16,9 @@ Features:
 - Promise-based (async/await and try/catch capable).
 - N-number of concurrent prompt support.
 - Render anywhere you like for each prompt.
-- Typescript support
-- Minimalistic, easy to use API
-- Very small bundle size
+- Typescript support.
+- Minimalistic, easy to use API.
+- Very small bundle size.
 
 ---
 
