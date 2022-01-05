@@ -46,4 +46,14 @@ function App() {
 
 The only real difference here (compared to plain JS) is the incorporation of the `RenderProps` type in the Prompt component.
 
-This is the type which defines the (`resolve`, `reject`, and `visible`) properties passed into the function.
+This is the interface which defines the (`resolve`, `reject`, and `visible`) properties passed into the function. You can of course extend this and add your own props as you like:
+
+```javascript
+interface PromptProps extends RenderProps {
+  someProp: boolean;
+}
+
+function Prompt(props: PromptProps) {
+  /* ... */
+}
+```
