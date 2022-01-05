@@ -42,6 +42,8 @@ yarn add use-prompt
    - [Multiple sequential prompts](/examples/sequential)
    - [Multiple concurrent prompts](/examples/concurrent)
    - [Persistant prompts](/examples/persistant)
+   - [Render control](/examples/render-control)
+   - [Typescript example](/examples/typescript)
 
 ---
 
