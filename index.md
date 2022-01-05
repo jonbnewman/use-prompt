@@ -52,4 +52,5 @@ yarn add use-prompt
 
 [![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
 ![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
+![Package size](https://img.shields.io/bundlephobia/minzip/use-prompt)
 ![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
