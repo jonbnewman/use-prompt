@@ -24,8 +24,8 @@ React hook used to create a prompt, returning an `Array` containing:
 
 - **options** `Object`
 
-  - `persist`
+  - **persist**
 
-    `false` (default) - The prompt is completely added and removed from the DOM.
+    `false`: The prompt is completely added and removed from the DOM (default).
 
-    `true` - The prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
+    `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.

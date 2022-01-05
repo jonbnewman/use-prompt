@@ -9,11 +9,11 @@ parent: Examples
 
 You might want to use the `persist` option to more directly control hiding/displaying the prompt. Doing this will allow you to display and hide the prompt when/how you choose.
 
-- `persist`
+- **persist**
 
-  `false` (default) - The prompt is completely added and removed from the DOM.
+  `false`: The prompt is completely added and removed from the DOM (default).
 
-  `true` - The prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
+  `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.
 
 ```javascript
 import usePrompt from "use-prompt";
