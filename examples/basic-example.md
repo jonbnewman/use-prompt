@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Basic Example
+title: Basic example
 nav_order: 1
 parent: Examples
 ---
