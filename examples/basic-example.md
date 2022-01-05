@@ -16,6 +16,6 @@ The following demonstrates a very basic example use of `usePrompt`.
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-When you run the demo, you will see that this prompt is added inline in the page.
+When you run the example above, you will see that this prompt is added inline in the page.
 
-When you create the prompt component, you choose how its rendered. If you want a full-screen modal, you would apply the styling for that to your prompt component.
+Since you are using your own custom component for the prompt you decide how it is rendered. If you want a full-screen modal, you would apply the styling for that to your prompt component.
