@@ -29,6 +29,7 @@ Features:
    - [Multiple sequential prompts](https://useprompt.jonbnewman.dev/examples/sequential)
    - [Multiple concurrent prompts](https://useprompt.jonbnewman.dev/examples/concurrent)
    - [Persistant prompts](https://useprompt.jonbnewman.dev/examples/persistant)
+   - [Render control](https://useprompt.jonbnewman.dev/examples/render-control)
 
 ---
 
