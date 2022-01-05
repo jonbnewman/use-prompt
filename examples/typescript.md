@@ -44,4 +44,6 @@ function App() {
 }
 ```
 
-The only real difference here (compared to plain JS) is the incorporation of the `RenderProps` type in the render callback function. This is the type which defines the (`resolve`, `reject`, and `visible`) properties passed into the function.
+The only real difference here (compared to plain JS) is the incorporation of the `RenderProps` type in the Prompt component.
+
+This is the type which defines the (`resolve`, `reject`, and `visible`) properties passed into the function.
