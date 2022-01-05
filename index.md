@@ -1,48 +1,33 @@
-## Welcome to GitHub Pages
+# use-prompt
 
-You can use the [editor on GitHub](https://github.com/jonbnewman/use-prompt/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main&r=1)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
+![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
+![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
 
-### Test embed
+**use-prompt** is a [React Hook](https://reactjs.org/docs/hooks-intro.html) that lets you conveniently display a component to a user asynchronously.
 
-<iframe src="https://codesandbox.io/embed/water-distortion-effect-codrops-0dg1p?fontsize=14&hidenavigation=1&theme=dark"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="Water Distortion Effect - Codrops"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+This allows you to ask a user for input, prompt for an answer, display a message, or do whatever you want in an asynchronous manner.
 
-### Markdown
+Features:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Promise-based (async/await and try/catch capable)
+- N-number of concurrent prompt support
+- Render anywhere you like for each prompt
+- Typescript support
+- Minimalistic, easy to use API
+- Very small bundle size
 
-```markdown
-Syntax highlighted code block
+---
 
-# Header 1
+## Installation
 
-## Header 2
-
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+npm i use-prompt
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jonbnewman/use-prompt/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```bash
+yarn add use-prompt
+```
