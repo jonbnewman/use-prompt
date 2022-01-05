@@ -23,6 +23,7 @@ Features:
 ---
 
 1. [API Details](https://useprompt.jonbnewman.dev/api)
+1. [Typescript](https://useprompt.jonbnewman.dev/typescript)
 1. [Examples](https://useprompt.jonbnewman.dev/examples)
    - [Basic example](https://useprompt.jonbnewman.dev/examples/basic-example)
    - [Async/await and try/catch](https://useprompt.jonbnewman.dev/examples/async)
@@ -30,7 +31,6 @@ Features:
    - [Multiple concurrent prompts](https://useprompt.jonbnewman.dev/examples/concurrent)
    - [Persistant prompts](https://useprompt.jonbnewman.dev/examples/persistant)
    - [Render control](https://useprompt.jonbnewman.dev/examples/render-control)
-   - [Typescript example](https://useprompt.jonbnewman.dev/examples/typescript)
 
 ---
 
