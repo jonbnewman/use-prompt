@@ -36,6 +36,7 @@ yarn add use-prompt
 ---
 
 1. [API Details](/api)
+1. [Typescript](/typescript)
 1. [Examples](/examples)
    - [Basic example](/examples/basic-example)
    - [Async/await and try/catch](/examples/async)
@@ -43,7 +44,6 @@ yarn add use-prompt
    - [Multiple concurrent prompts](/examples/concurrent)
    - [Persistant prompts](/examples/persistant)
    - [Render control](/examples/render-control)
-   - [Typescript example](/examples/typescript)
 
 ---
 

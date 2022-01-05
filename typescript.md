@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Typescript
-nav_order: 7
-parent: Examples
+nav_order: 3
 ---
 
 # Typescript
