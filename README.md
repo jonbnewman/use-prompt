@@ -31,7 +31,7 @@ yarn add use-prompt
 
 ## Basic example
 
-The following demonstrates a very basic example use of `usePrompt` possible.
+The following demonstrates a very basic example use of `usePrompt`.
 
 ```javascript
 import usePrompt from 'use-prompt';
