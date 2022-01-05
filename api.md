@@ -24,10 +24,12 @@ React hook used to create a prompt, returning an `Array` containing:
 
 - **options** `Object`
 
-  - `persist` **IS** `true`
+  - `persist`
 
-    The prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
-
-  - `persist` is **NOT** `true` (the default)
+    **NOT** `true` (the default)
 
     The prompt is completely added and removed from the DOM.
+
+    **IS** `true`
+
+    The prompt will remain in the DOM always...letting you control if, how and when the prompts display is changed.
