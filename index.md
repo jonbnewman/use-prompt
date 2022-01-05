@@ -19,13 +19,6 @@ Features:
 - Minimalistic, easy to use API
 - Very small bundle size
 
-![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main&r=1)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
-
-[![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
-![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
-![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
-
 ---
 
 ## Installation
@@ -37,3 +30,24 @@ npm i use-prompt
 ```bash
 yarn add use-prompt
 ```
+
+[Get started: **Basic example**](/examples/basic-example){: .btn .btn-blue }
+
+---
+
+1. [API Details](/api)
+1. [Examples](/examples)
+   - [Basic example](/examples/basic-example)
+   - [Async/await and try/catch](/examples/async)
+   - [Multiple sequential prompts](/examples/sequential)
+   - [Multiple concurrent prompts](/examples/concurrent)
+   - [Persistant prompts](/examples/persistant)
+
+---
+
+![CI](https://github.com/jonbnewman/use-prompt/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/jonbnewman/use-prompt/badge.svg?branch=main&r=1)](https://coveralls.io/github/jonbnewman/use-prompt?branch=main)
+
+[![NPM Package](https://img.shields.io/npm/v/use-prompt.svg?logo=npm)](https://www.npmjs.com/package/use-prompt)
+![Typescript](https://img.shields.io/badge/types-TypeScript-blue?logo=typescript)
+![MIT License](https://img.shields.io/github/license/jonbnewman/use-prompt)
