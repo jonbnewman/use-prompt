@@ -1,5 +1,5 @@
 remote_theme: pmarsceill/just-the-docs
-color_scheme: dark
+color_scheme: light
 #logo: "/logo.png"
 heading_anchors: true
 aux_links:
