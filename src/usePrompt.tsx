@@ -9,10 +9,15 @@ export interface RenderProps {
 }
 
 interface Prompt {
-  state: 'pending' | 'hidden';
+  state: STATE;
   renderer: Renderer;
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
+}
+
+enum STATE {
+  HIDDEN,
+  PENDING,
 }
 
 /**
@@ -33,7 +38,7 @@ export function usePrompt(options?: {
 }): [ReactNode, (renderer: Renderer) => Promise<Response>, boolean] {
   const [visible, setVisible] = useState(false);
   const [prompt, setPrompt] = useState<Prompt>({
-    state: 'hidden',
+    state: STATE.HIDDEN,
     renderer: () => null,
     resolve: () => {},
     reject: () => {},
@@ -41,16 +46,16 @@ export function usePrompt(options?: {
 
   function resolve(value?: Response) {
     prompt.resolve(value);
-    setPrompt({ ...prompt, state: 'hidden' });
+    setPrompt({ ...prompt, state: STATE.HIDDEN });
   }
   function reject(value?: Response) {
     prompt.reject(value);
-    setPrompt({ ...prompt, state: 'hidden' });
+    setPrompt({ ...prompt, state: STATE.HIDDEN });
   }
 
   useEffect(() => {
     const setVisibleTimeout = setTimeout(() => {
-      setVisible(prompt.state === 'pending');
+      setVisible(prompt.state === STATE.PENDING);
     });
     return () => clearTimeout(setVisibleTimeout);
   }, [prompt]);
@@ -62,7 +67,7 @@ export function usePrompt(options?: {
     (renderer) =>
       new Promise<Response>((resolve, reject) =>
         setPrompt({
-          state: 'pending',
+          state: STATE.PENDING,
           renderer,
           resolve,
           reject,
