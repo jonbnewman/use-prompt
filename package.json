@@ -22,10 +22,10 @@
   ],
   "scripts": {
     "analyze": "size-limit --why",
-    "build": "dts build",
+    "build": "dts build --format esm",
     "build-storybook": "build-storybook",
     "lint": "dts lint",
-    "prepare": "dts build",
+    "prepare": "dts build --format esm",
     "size": "size-limit",
     "start": "dts watch",
     "storybook": "start-storybook -p 6006",
