@@ -16,6 +16,6 @@ This example demonstrates how to use async/await and try/catch in order to retri
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-The essential piece to take from this is that the `showPrompt` callback returns a promise that represents the outcome of the prompt. You can either `resolve` or `reject` it and return the result to the caller as you might expect.
+The essential piece to take from this is that the `showPrompt` callback returns a promise that represents the outcome of the prompt. You can either `resolve` or `reject` it and return the result to the caller as you might expect when using `try/catch`.
 
 Note that you don't **have to** use `try/catch`, you can just always `resolve` from within your prompt and then only worry about the result returned from the promise.
