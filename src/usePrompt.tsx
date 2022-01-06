@@ -10,6 +10,7 @@ export interface RenderProps {
 
 enum STATE {
   HIDDEN,
+  OPENING,
   VISIBLE,
 }
 
@@ -19,6 +20,8 @@ interface Prompt {
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
 }
+
+const shouldRender = [STATE.OPENING, STATE.VISIBLE];
 
 /**
  * React hook to create a prompt.
@@ -36,38 +39,36 @@ interface Prompt {
 export function usePrompt(options?: {
   persist?: boolean;
 }): [ReactNode, (renderer: Renderer) => Promise<Response>, boolean] {
-  const [visible, setVisible] = useState(false);
   const [prompt, setPrompt] = useState<Prompt>({
     state: STATE.HIDDEN,
     renderer: () => null,
     resolve: () => {},
     reject: () => {},
   });
+  const rendered = options?.persist || shouldRender.includes(prompt.state);
+  const visible = prompt.state === STATE.VISIBLE;
 
-  function resolve(value?: Response) {
-    prompt.resolve(value);
+  function resolve(value: Response) {
     setPrompt({ ...prompt, state: STATE.HIDDEN });
+    prompt.resolve(value);
   }
   function reject(value?: Response) {
-    prompt.reject(value);
     setPrompt({ ...prompt, state: STATE.HIDDEN });
+    prompt.reject(value);
   }
 
   useEffect(() => {
-    const setVisibleTimeout = setTimeout(() => {
-      setVisible(prompt.state === STATE.VISIBLE);
-    });
-    return () => clearTimeout(setVisibleTimeout);
+    if (prompt.state === STATE.OPENING) {
+      setPrompt({ ...prompt, state: STATE.VISIBLE });
+    }
   }, [prompt]);
 
   return [
-    options?.persist || visible
-      ? prompt.renderer({ visible, resolve, reject })
-      : null,
+    rendered ? prompt.renderer({ visible, resolve, reject }) : null,
     (renderer) =>
       new Promise<Response>((resolve, reject) =>
         setPrompt({
-          state: STATE.VISIBLE,
+          state: STATE.OPENING,
           renderer,
           resolve,
           reject,
