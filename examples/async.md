@@ -9,39 +9,9 @@ parent: Examples
 
 This example demonstrates how to use async/await and try/catch in order to retrieve what the users response within the prompt was.
 
-```javascript
-import { useState } from "react";
-import usePrompt from "use-prompt";
-
-function App() {
-  const [prompt, showPrompt, visible] = usePrompt();
-  const [cancelReason, setCancelReason] = useState(null);
-  const [confirmResponse, setConfirmResponse] = useState(null);
-
-  async function showMyPrompt() {
-    try {
-      const response = await showPrompt(({ resolve, reject }) => (
-        <>
-          <div>Are you sure?</div>
-          <button onClick={() => reject("clicked cancel")}>Cancel</button>
-          <button onClick={() => resolve("clicked yes")}>Yes</button>
-        </>
-      ));
-      setConfirmResponse(response);
-    } catch (reason) {
-      setCancelReason(reason);
-    }
-  }
-
-  return (
-    <>
-      <button onClick={showMyPrompt} disabled={visible}>
-        Show prompt
-      </button>
-      {prompt}
-      {confirmResponse && `Prompt was confirmed: ${confirmResponse}`}
-      {cancelReason && `Prompt was cancelled: ${cancelReason}`}
-    </>
-  );
-}
-```
+<iframe src="https://codesandbox.io/embed/async-useprompt-u50zi?fontsize=13&hidenavigation=1&theme=light&view=editor&module=/src/App.js,/src/styles.css"
+  style="width:100%; height:700px; border:0; border-radius: 4px; overflow:hidden;"
+  title="Async usePrompt"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
