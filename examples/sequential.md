@@ -9,38 +9,9 @@ parent: Examples
 
 Rendering multiple sequential prompts is supported.
 
-```javascript
-import usePrompt from "use-prompt";
-
-function Prompt({ resolve, message }) {
-  return (
-    <>
-      <div>{message}</div>
-      <button onClick={resolve}>Ok thanks</button>
-    </>
-  );
-}
-
-function App() {
-  const [prompt1, showPrompt1, visible1] = usePrompt();
-  const [prompt2, showPrompt2, visible2] = usePrompt();
-  const [prompt3, showPrompt3, visible3] = usePrompt();
-
-  async function showPrompts() {
-    await showPrompt1((props) => <Prompt {...props} message="Prompt1" />);
-    await showPrompt2((props) => <Prompt {...props} message="Prompt2" />);
-    await showPrompt3((props) => <Prompt {...props} message="Prompt3" />);
-  }
-
-  return (
-    <div>
-      <button onClick={showPrompts} disabled={visible1 || visible2 || visible3}>
-        Show prompts
-      </button>
-      {prompt1}
-      {prompt2}
-      {prompt3}
-    </div>
-  );
-}
-```
+<iframe src="https://codesandbox.io/embed/useprompt-sequential-vojo7?fontsize=13&hidenavigation=1&theme=light&view=editor&module=/src/App.js,/src/styles.css"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="usePrompt sequential"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
