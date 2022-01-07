@@ -148,7 +148,7 @@ function App() {
       <button onClick={showPrompts} disabled={visible1 || visible2 || visible3}>
         Show prompts
       </button>
-      {prompt1}
+      {prompt}
     </div>
   );
 }
