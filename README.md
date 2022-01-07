@@ -135,14 +135,12 @@ function Prompt({ resolve, message }) {
 }
 
 function App() {
-  const [prompt1, showPrompt1, visible1] = usePrompt();
-  const [prompt2, showPrompt2, visible2] = usePrompt();
-  const [prompt3, showPrompt3, visible3] = usePrompt();
+  const [prompt, showPrompt, visible] = usePrompt();
 
   async function showPrompts() {
-    await showPrompt1((props) => <Prompt {...props} message="Prompt1" />);
-    await showPrompt2((props) => <Prompt {...props} message="Prompt2" />);
-    await showPrompt3((props) => <Prompt {...props} message="Prompt3" />);
+    await showPrompt((props) => <Prompt {...props} message="Prompt 1" />);
+    await showPrompt((props) => <Prompt {...props} message="Prompt 2" />);
+    await showPrompt((props) => <Prompt {...props} message="Prompt 3" />);
   }
 
   return (
@@ -151,8 +149,6 @@ function App() {
         Show prompts
       </button>
       {prompt1}
-      {prompt2}
-      {prompt3}
     </div>
   );
 }
