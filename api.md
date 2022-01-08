@@ -20,6 +20,23 @@ const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
 ): [RenderedPrompt, ShowPrompt, IsVisible, ClearPrompt]
 ```
 
+```javascript
+import usePrompt from "use-prompt";
+const [prompt, showPrompt, visible] = usePrompt({ persist: true });
+```
+
+## Parameters
+
+- **options** `Object`
+
+  - **persist**
+
+    `false`: The prompt is completely added and removed from the DOM (default).
+
+    `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.
+
+## Returns
+
 - `RenderedPrompt` The rendered output. You should place this somewhere in the DOM.
 
   ```javascript
@@ -45,18 +62,3 @@ const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
   ```javascript
   type ClearPrompt = () => void;
   ```
-
-```javascript
-import usePrompt from "use-prompt";
-const [prompt, showPrompt, visible] = usePrompt({ persist: true });
-```
-
-## Parameters
-
-- **options** `Object`
-
-  - **persist**
-
-    `false`: The prompt is completely added and removed from the DOM (default).
-
-    `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.
