@@ -13,16 +13,12 @@ React hook used to create a prompt, returning an `Array` containing:
 - Boolean flag indicating whether or not the prompt is visible or not
 
 ```javascript
+import usePrompt from "use-prompt";
 const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
   options?: {
     persist?: boolean;
   }
 ): [RenderedPrompt, ShowPrompt, IsVisible, ClearPrompt]
-```
-
-```javascript
-import usePrompt from "use-prompt";
-const [prompt, showPrompt, visible] = usePrompt({ persist: true });
 ```
 
 ## Parameters
