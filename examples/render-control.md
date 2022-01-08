@@ -15,38 +15,11 @@ You might want to use the `persist` option to more directly control hiding/displ
 
   `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.
 
-```javascript
-import usePrompt from "use-prompt";
-
-function App() {
-  const [prompt, showPrompt, visible] = usePrompt({ persist: true });
-
-  async function showPrompts() {
-    await showPrompt(({ resolve, visible }) => (
-      <div
-        style={{
-          opacity: visible ? 1 : 0,
-          visibility: visible ? "visible" : "hidden",
-          transition: "all 0.3s ease",
-        }}
-      >
-        <div>To him, she was rain</div>
-        <button onClick={resolve}>Ok</button>
-      </div>
-    ));
-  }
-
-  return (
-    <div>
-      <button onClick={showPrompts} disabled={visible}>
-        Show prompts
-      </button>
-      {prompt1}
-      {prompt2}
-      {prompt3}
-    </div>
-  );
-}
-```
+<iframe src="https://codesandbox.io/embed/useprompt-render-control-kf3pf?autoresize=1&fontsize=13&hidenavigation=1&theme=light&view=editor&module=/src/App.js,/src/Prompt.js,/src/styles.css"
+  style="width:100%; height:700px; border:0; border-radius: 4px; overflow:hidden;"
+  title="usePrompt render control"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 As shown here, this prompt will animate smoothly in and out. This is possible because the component remains on the page after the user clicks `Ok`, this allows us to alter the props passed to the `div` and make it fade-out.
