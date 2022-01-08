@@ -15,46 +15,11 @@ You might want to use the `persist` option to more directly control hiding/displ
 
   `true`: The prompt will remain in the DOM always...letting you control how and when the prompts display is changed.
 
-```javascript
-import usePrompt from "use-prompt";
-
-function Prompt({ resolve, message }) {
-  return (
-    <>
-      <div>{message}</div>
-      <button onClick={resolve}>Ok</button>
-    </>
-  );
-}
-
-function App() {
-  const [prompt1, showPrompt1, visible1] = usePrompt({ persist: true });
-  const [prompt2, showPrompt2, visible2] = usePrompt({ persist: true });
-  const [prompt3, showPrompt3, visible3] = usePrompt({ persist: true });
-
-  async function showPrompts() {
-    await showPrompt1((props) => (
-      <Prompt {...props} message="To him, she was rain" />
-    ));
-    await showPrompt2((props) => (
-      <Prompt {...props} message="To her, she was sunshine" />
-    ));
-    await showPrompt3((props) => (
-      <Prompt {...props} message="Together, they made rainbows" />
-    ));
-  }
-
-  return (
-    <div>
-      <button onClick={showPrompts} disabled={visible1 || visible2 || visible3}>
-        Show prompts
-      </button>
-      {prompt1}
-      {prompt2}
-      {prompt3}
-    </div>
-  );
-}
-```
+<iframe src="https://codesandbox.io/embed/useprompt-persistant-dd2wn?autoresize=1&fontsize=14&hidenavigation=1&theme=light&view=editor"
+  style="width:100%; height:700px; border:0; border-radius: 4px; overflow:hidden;"
+  title="usePrompt persistant"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 As shown here, each prompt will display one after the other and remain on screen after the user clicks the `Ok` button.
