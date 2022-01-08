@@ -57,7 +57,7 @@ const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
 ): [RenderedPrompt, ShowPrompt, IsVisible, ClearPrompt]
 ```
 
-See the full [API Details page](https://useprompt.jonbnewman.dev/api) for more information.
+See the [API Details page](https://useprompt.jonbnewman.dev/api) for more information.
 
 ## Basic example
 
