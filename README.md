@@ -91,7 +91,7 @@ function App() {
 
 ### Async/await and try/catch
 
-This example demonstrates how to use async/await and try/catch in order to retrieve what the users response within the prompt was.
+Use async/await and try/catch in order to retrieve what the users response within the prompt was:
 
 ```javascript
 import { useState } from 'react';
@@ -132,7 +132,7 @@ function App() {
 
 ## Sequential prompts
 
-You can display prompts one after another in a sequential manner.
+Display prompts one after another in a sequential manner:
 
 ```javascript
 import usePrompt from 'use-prompt';
@@ -168,7 +168,7 @@ function App() {
 
 ## Multiple concurrent prompts
 
-You can display as many prompts concurrently as you want.
+Display as many prompts concurrently as you want:
 
 ```javascript
 import usePrompt from 'use-prompt';
