@@ -67,7 +67,7 @@ The following demonstrates a very basic example use of `usePrompt`.
 import usePrompt from 'use-prompt';
 
 function App() {
-  const [prompt, showPrompt, visible] = usePrompt();
+  const [prompt, showPrompt, isVisible] = usePrompt();
 
   function showMyPrompt() {
     showPrompt(({ resolve }) => (
@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={showMyPrompt} disabled={visible}>
+      <button onClick={showMyPrompt} disabled={isVisible}>
         Show prompt
       </button>
       {prompt}
@@ -98,7 +98,7 @@ import { useState } from 'react';
 import usePrompt from 'use-prompt';
 
 function App() {
-  const [prompt, showPrompt, visible] = usePrompt();
+  const [prompt, showPrompt, isVisible] = usePrompt();
   const [cancelReason, setCancelReason] = useState(null);
   const [confirmResponse, setConfirmResponse] = useState(null);
 
@@ -119,7 +119,7 @@ function App() {
 
   return (
     <>
-      <button onClick={showMyPrompt} disabled={visible}>
+      <button onClick={showMyPrompt} disabled={isVisible}>
         Show prompt
       </button>
       {prompt}
@@ -147,7 +147,7 @@ function Prompt({ resolve, message }) {
 }
 
 function App() {
-  const [prompt, showPrompt, visible] = usePrompt();
+  const [prompt, showPrompt, isVisible] = usePrompt();
 
   async function showPrompts() {
     await showPrompt((props) => <Prompt {...props} message="Prompt 1" />);
@@ -157,7 +157,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={showPrompts} disabled={visible1 || visible2 || visible3}>
+      <button onClick={showPrompts} disabled={isVisible}>
         Show prompts
       </button>
       {prompt}
@@ -183,9 +183,9 @@ function Prompt({ resolve, message }) {
 }
 
 function App() {
-  const [prompt1, showPrompt1, visible1] = usePrompt();
-  const [prompt2, showPrompt2, visible2] = usePrompt();
-  const [prompt3, showPrompt3, visible3] = usePrompt();
+  const [prompt1, showPrompt1, isVisible1] = usePrompt();
+  const [prompt2, showPrompt2, isVisible2] = usePrompt();
+  const [prompt3, showPrompt3, isVisible3] = usePrompt();
 
   function triggerPrompt1() {
     showPrompt1((props) => <Prompt {...props} message="Prompt1" />);
@@ -199,17 +199,17 @@ function App() {
 
   return (
     <div>
-      <button onClick={triggerPrompt1} disabled={visible1}>
+      <button onClick={triggerPrompt1} disabled={isVisible1}>
         Show prompt 1
       </button>
       {prompt1}
 
-      <button onClick={triggerPrompt2} disabled={visible2}>
+      <button onClick={triggerPrompt2} disabled={isVisible2}>
         Show prompt 2
       </button>
       {prompt2}
 
-      <button onClick={triggerPrompt3} disabled={visible3}>
+      <button onClick={triggerPrompt3} disabled={isVisible3}>
         Show prompt 3
       </button>
       {prompt3}
