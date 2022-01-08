@@ -61,7 +61,7 @@ See the [API Details page](https://useprompt.jonbnewman.dev/api) for more inform
 
 ## Basic example
 
-The following demonstrates a very basic example use of `usePrompt`.
+The following demonstrates a very basic example use of `usePrompt`:
 
 ```javascript
 import usePrompt from 'use-prompt';
