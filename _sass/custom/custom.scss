@@ -9,3 +9,7 @@
 li > p:first-child {
   margin: 0;
 }
+
+p + .highlighter-rouge {
+  margin-top: 4px;
+}
