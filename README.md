@@ -47,6 +47,18 @@ npm i use-prompt
 yarn add use-prompt
 ```
 
+## API
+
+```javascript
+const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
+  options?: {
+    persist?: boolean;
+  }
+): [RenderedPrompt, ShowPrompt, IsVisible, ClearPrompt]
+```
+
+See the full [API Details page](https://useprompt.jonbnewman.dev/api) for more information.
+
 ## Basic example
 
 The following demonstrates a very basic example use of `usePrompt`.
