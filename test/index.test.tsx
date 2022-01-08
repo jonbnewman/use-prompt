@@ -27,6 +27,28 @@ describe('Modal Prompt', () => {
     });
   });
 
+  it('can clear a prompt', async () => {
+    const { queryByText, getByTestId } = render(<Prompter clearable />);
+
+    await waitFor(() => {
+      expect(queryByText('Prompt is currently hidden')).toBeInTheDocument();
+    });
+
+    const button = getByTestId('show-prompt');
+    expect(button).not.toHaveAttribute('disabled');
+    expect(queryByText('Are you sure?')).not.toBeInTheDocument();
+
+    fireEvent.click(button);
+    await waitFor(() => {
+      expect(queryByText('Are you sure?')).toBeInTheDocument();
+    });
+
+    fireEvent.click(button);
+    await waitFor(() => {
+      expect(queryByText('Are you sure?')).not.toBeInTheDocument();
+    });
+  });
+
   it('can resolve a prompt', async () => {
     const { queryByText, getByTestId } = render(<Prompter />);
 

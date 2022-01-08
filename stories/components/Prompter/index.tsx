@@ -6,10 +6,12 @@ import Message from './Message';
 import Button from './Button';
 import Output from './Output';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {}
+export interface Props extends HTMLAttributes<HTMLDivElement> {
+  clearable?: boolean;
+}
 
-export const Prompter: FC<Props> = () => {
-  const [prompt, showPrompt, visible] = usePrompt();
+export const Prompter: FC<Props> = ({ clearable = false }) => {
+  const [prompt, showPrompt, visible, clear] = usePrompt();
   const [resolveReason, setResolveReason] = useState<null | string>(null);
   const [rejectReason, setRejectReason] = useState<null | string>(null);
 
@@ -34,8 +36,8 @@ export const Prompter: FC<Props> = () => {
       <div>
         <Button
           variant="contained"
-          onClick={triggerPrompt}
-          disabled={visible}
+          onClick={visible ? clear : triggerPrompt}
+          disabled={visible && !clearable}
           data-testid="show-prompt"
         >
           Show prompt
