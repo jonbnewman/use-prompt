@@ -175,29 +175,29 @@ function App() {
   const [prompt2, showPrompt2, visible2] = usePrompt();
   const [prompt3, showPrompt3, visible3] = usePrompt();
 
-  function showPrompt1() {
+  function prompt1() {
     showPrompt1((props) => <Prompt {...props} message="Prompt1" />);
   }
-  function showPrompt2() {
+  function prompt2() {
     showPrompt2((props) => <Prompt {...props} message="Prompt2" />);
   }
-  function showPrompt3() {
+  function prompt3() {
     showPrompt3((props) => <Prompt {...props} message="Prompt3" />);
   }
 
   return (
     <div>
-      <button onClick={showPrompt1} disabled={visible1}>
+      <button onClick={prompt1} disabled={visible1}>
         Show prompt 1
       </button>
       {prompt1}
 
-      <button onClick={showPrompt2} disabled={visible2}>
+      <button onClick={prompt2} disabled={visible2}>
         Show prompt 2
       </button>
       {prompt2}
 
-      <button onClick={showPrompt3} disabled={visible3}>
+      <button onClick={prompt3} disabled={visible3}>
         Show prompt 3
       </button>
       {prompt3}
