@@ -50,7 +50,7 @@ yarn add use-prompt
 ## API
 
 ```javascript
-const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
+const [prompt, showPrompt, isVisible, clearPrompt] = usePrompt(
   options?: {
     persist?: boolean;
   }
