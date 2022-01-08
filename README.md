@@ -30,8 +30,8 @@ Features:
 1. [Examples](https://useprompt.jonbnewman.dev/examples)
    - [Basic example](https://useprompt.jonbnewman.dev/examples/basic-example)
    - [Async/await and try/catch](https://useprompt.jonbnewman.dev/examples/async)
-   - [Multiple sequential prompts](https://useprompt.jonbnewman.dev/examples/sequential)
-   - [Multiple concurrent prompts](https://useprompt.jonbnewman.dev/examples/concurrent)
+   - [Sequential prompts](https://useprompt.jonbnewman.dev/examples/sequential)
+   - [Concurrent prompts](https://useprompt.jonbnewman.dev/examples/concurrent)
    - [Persistant prompts](https://useprompt.jonbnewman.dev/examples/persistant)
    - [Render control](https://useprompt.jonbnewman.dev/examples/render-control)
 
@@ -166,7 +166,7 @@ function App() {
 }
 ```
 
-## Multiple concurrent prompts
+## Concurrent prompts
 
 Display as many prompts concurrently as you want:
 
