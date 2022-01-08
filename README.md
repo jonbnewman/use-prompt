@@ -132,7 +132,7 @@ function App() {
 
 ## Sequential prompts
 
-Rendering multiple sequential prompts is supported.
+You can display prompts one after another in a sequential manner.
 
 ```javascript
 import usePrompt from 'use-prompt';
@@ -168,7 +168,7 @@ function App() {
 
 ## Multiple concurrent prompts
 
-Rendering multiple concurrent prompts is supported.
+You can display as many prompts concurrently as you want.
 
 ```javascript
 import usePrompt from 'use-prompt';
