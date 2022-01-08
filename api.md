@@ -47,7 +47,7 @@ const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
 
   This takes a component or callback function as an argument and returns a promise as its result.
 
-  For more details [see below](#showprompt).
+  For more details [see below](#showprompt-callback).
 
 - `IsVisible` Boolean indicating whether or not the prompt is currently visible.
 
