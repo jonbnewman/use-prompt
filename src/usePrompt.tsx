@@ -2,11 +2,17 @@ import { ReactNode, useEffect, useState } from 'react';
 
 export type Response = any;
 export type Renderer = (props: RenderProps) => ReactNode;
+
 export interface RenderProps {
   visible: boolean;
   resolve: (value: Response) => void;
   reject: (value?: Response) => void;
 }
+
+export type RenderedPrompt = ReactNode;
+export type ShowPrompt = (renderer: Renderer) => Promise<Response>;
+export type IsVisible = boolean;
+export type ClearPrompt = () => void;
 
 enum STATE {
   HIDDEN,
@@ -22,6 +28,12 @@ interface Prompt {
 }
 
 const shouldRender = [STATE.OPENING, STATE.VISIBLE];
+const nullPrompt: Prompt = {
+  state: STATE.HIDDEN,
+  renderer: () => null,
+  resolve: () => {},
+  reject: () => {},
+};
 
 /**
  * React hook to create a prompt.
@@ -33,18 +45,14 @@ const shouldRender = [STATE.OPENING, STATE.VISIBLE];
  * * **prompt** - the rendered output
  * * **showPrompt** - callback used to trigger/open the prompt
  * * **visible** - boolean indicating if the prompt is displayed currently
+ * * **clearPrompt** - clear/reset and remove the prompt
  * @param options Options object
- * @returns [prompt, showPrompt, visible]
+ * @returns [prompt, showPrompt, visible, clearPrompt]
  */
 export function usePrompt(options?: {
   persist?: boolean;
-}): [ReactNode, (renderer: Renderer) => Promise<Response>, boolean] {
-  const [prompt, setPrompt] = useState<Prompt>({
-    state: STATE.HIDDEN,
-    renderer: () => null,
-    resolve: () => {},
-    reject: () => {},
-  });
+}): [RenderedPrompt, ShowPrompt, IsVisible, ClearPrompt] {
+  const [prompt, setPrompt] = useState<Prompt>(nullPrompt);
   const rendered = options?.persist || shouldRender.includes(prompt.state);
   const visible = prompt.state === STATE.VISIBLE;
 
@@ -75,5 +83,6 @@ export function usePrompt(options?: {
         })
       ),
     visible,
+    () => setPrompt(nullPrompt),
   ];
 }
