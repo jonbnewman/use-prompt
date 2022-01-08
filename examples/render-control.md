@@ -22,4 +22,4 @@ You might want to use the `persist` option to more directly control hiding/displ
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-As shown here, this prompt will animate smoothly in and out. This is possible because the component remains on the page after the user clicks `Ok`, this allows us to alter the props passed to the `div` and make it fade-out.
+As shown here, this prompt will animate smoothly in and out. This is possible because the component remains on the page after the user clicks `Ok`, this allows us to alter the props passed to the `div` and make it fade in and out using a class applied to its container and a small amount of CSS.
