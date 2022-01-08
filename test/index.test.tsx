@@ -41,6 +41,7 @@ describe('Modal Prompt', () => {
 
     fireEvent.click(getByTestId('resolve-button'));
     await waitFor(() => {
+      expect(queryByText('clicked resolve-button')).toBeInTheDocument();
       expect(queryByText('Prompt is currently hidden')).toBeInTheDocument();
       expect(button).not.toHaveAttribute('disabled');
     });
@@ -61,6 +62,7 @@ describe('Modal Prompt', () => {
     fireEvent.click(getByTestId('reject-button'));
     await waitFor(() => {
       expect(queryByText('Prompt is currently hidden')).toBeInTheDocument();
+      expect(queryByText('clicked reject-button')).toBeInTheDocument();
       expect(button).not.toHaveAttribute('disabled');
     });
   });

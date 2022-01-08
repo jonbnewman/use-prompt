@@ -35,7 +35,7 @@ export default function Prompt(props: PromptProps) {
         <Message>{message}</Message>
         <Buttons>
           <Button
-            onClick={reject}
+            onClick={() => reject('clicked reject-button')}
             variant="contained"
             disableElevation
             data-testid="reject-button"
@@ -43,7 +43,7 @@ export default function Prompt(props: PromptProps) {
             {rejectLabel}
           </Button>
           <Button
-            onClick={resolve}
+            onClick={() => resolve('clicked resolve-button')}
             variant="contained"
             disableElevation
             data-testid="resolve-button"

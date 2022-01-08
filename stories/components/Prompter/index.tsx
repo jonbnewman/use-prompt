@@ -1,22 +1,28 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, useState } from 'react';
 import usePrompt from '../../../src';
 
 import Prompt from './Prompt';
 import Message from './Message';
 import Button from './Button';
+import Output from './Output';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {}
 
-export const Prompter: FC<Props> = (storybookProps) => {
+export const Prompter: FC<Props> = () => {
   const [prompt, showPrompt, visible] = usePrompt();
+  const [resolveReason, setResolveReason] = useState<null | string>(null);
+  const [rejectReason, setRejectReason] = useState<null | string>(null);
 
   async function triggerPrompt() {
+    setResolveReason(null);
+    setRejectReason(null);
     try {
       const resolveReason = await showPrompt((props) => {
-        return <Prompt {...props} {...storybookProps} />;
+        return <Prompt {...props} />;
       });
+      setResolveReason(resolveReason);
     } catch (rejectReason) {
-      // do nothing
+      setRejectReason(rejectReason as string);
     }
   }
 
@@ -36,6 +42,12 @@ export const Prompter: FC<Props> = (storybookProps) => {
         </Button>
       </div>
       {prompt}
+      {resolveReason !== null && (
+        <Output data-testid="resolve-reason">{resolveReason}</Output>
+      )}
+      {rejectReason !== null && (
+        <Output data-testid="reject-reason">{rejectReason}</Output>
+      )}
     </div>
   );
 };
