@@ -58,3 +58,27 @@ const [prompt, showPrompt, visible, clearPrompt] = usePrompt(
   ```javascript
   type ClearPrompt = () => void;
   ```
+
+### showPrompt
+
+`showPrompt` is a callback that triggers/opens the prompt:
+
+```javascript
+showPrompt: (Renderer) => Promise<Response>
+```
+
+When calling `showPrompt` you pass it a callback or component with the following signature:
+
+```javascript
+(props: {
+  visible: boolean,
+  resolve: (value: Response) => void,
+  reject: (value?: Response) => void,
+}) => ReactNode;
+```
+
+Here is a quick snippet showing how you can use the `props` passed in to the prompt:
+
+```javascript
+showPrompt(({ resolve }) => <div onClick={resolve}>My prompt</div>);
+```
