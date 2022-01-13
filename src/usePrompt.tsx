@@ -73,16 +73,15 @@ export function usePrompt(options?: {
 
   return [
     rendered ? prompt.renderer({ visible, resolve, reject }) : null,
-    function renderCallback<R extends Response>(renderer: Renderer) {
-      return new Promise<R>((resolve, reject) =>
+    <R extends Response>(renderer: Renderer) =>
+      new Promise<R>((resolve, reject) =>
         setPrompt({
           state: STATE.OPENING,
           renderer,
           resolve,
           reject,
         })
-      );
-    },
+      ),
     visible,
     () => setPrompt(nullPrompt),
   ];
