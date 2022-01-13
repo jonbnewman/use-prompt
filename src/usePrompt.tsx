@@ -10,7 +10,7 @@ export interface RenderProps {
 }
 
 export type RenderedPrompt = ReactNode;
-export type ShowPrompt = (renderer: Renderer) => Promise<Response>;
+export type ShowPrompt = <R extends Response>(renderer: Renderer) => Promise<R>;
 export type IsVisible = boolean;
 export type ClearPrompt = () => void;
 
@@ -73,15 +73,16 @@ export function usePrompt(options?: {
 
   return [
     rendered ? prompt.renderer({ visible, resolve, reject }) : null,
-    (renderer) =>
-      new Promise<Response>((resolve, reject) =>
+    function renderCallback<R extends Response>(renderer: Renderer) {
+      return new Promise<R>((resolve, reject) =>
         setPrompt({
           state: STATE.OPENING,
           renderer,
           resolve,
           reject,
         })
-      ),
+      );
+    },
     visible,
     () => setPrompt(nullPrompt),
   ];
