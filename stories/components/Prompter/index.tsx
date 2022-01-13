@@ -19,7 +19,7 @@ export const Prompter: FC<Props> = ({ clearable = false }) => {
     setResolveReason(null);
     setRejectReason(null);
     try {
-      const resolveReason = await showPrompt((props) => {
+      const resolveReason = await showPrompt<string>((props) => {
         return <Prompt {...props} />;
       });
       setResolveReason(resolveReason);
